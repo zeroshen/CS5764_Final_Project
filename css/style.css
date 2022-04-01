@@ -1,2 +1,32 @@
 
 /* ADD YOUR STYLES HERE */
+.y-axis2 path {
+    display: none;
+}
+
+.container-fluid{
+    border: thin solid grey;
+    border-radius: 5px;
+}
+.row_1{
+    height: 12vh;
+    background: #22223b;
+}
+.row_2{
+    height: 60vh;
+}
+.row_3{
+    height: 30vh;
+}
+
+
+.page-title{
+    color: #F2E9E4
+}
+.bar {
+    fill: #357EC7;
+}
+.bars-label{
+    font: 14px sans-serif;
+    fill: dimgrey;
+}
