@@ -5,7 +5,7 @@ let totalPaid = 0;
 let myPieChart;
 let myPieChart2;
 
-d3.csv("data/data.csv", (row) => {
+d3.csv("data/googleplaystore_converted.csv", (row) => {
     // convertrow.value = +row.value
     if (row.Type == "Free" && row.Installs >= 10000000) {
         countFree += 1;
