@@ -20,8 +20,8 @@ class PieChart {
         let vis = this;
 
         // margin conventions
-        vis.margin = {top: 10, right: 50, bottom: 10, left: 50};
-        vis.width = 500 - vis.margin.left - vis.margin.right;
+        vis.margin = {top: 10, right: 0, bottom: 10, left: 150};
+        vis.width = 550 - vis.margin.left - vis.margin.right;
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
         // init drawing area
