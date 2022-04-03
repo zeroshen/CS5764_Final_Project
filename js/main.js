@@ -37,8 +37,8 @@ d3.csv("data/googleplaystore_converted.csv", (row) => {
     }
 }).then((data) => {
 
-    myPieChart = new PieChart('pieDivRight', "Free Applications", countFree, totalFree);
+    myPieChart = new PieChart('content-1', "Free Applications", countFree, totalFree);
 
-    myPieChart2 = new PieChart('mapDiv', "Paid Applications", countPaid, totalPaid);
+    myPieChart2 = new PieChart('vis_content-1', "Paid Applications", countPaid, totalPaid);
 
 })
