@@ -1,92 +1,119 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>CS5764 - Final Project - Core Four</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CS5764 - Final Project - Core Four</title>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-	<!-- * TO-DO * -->
-	<div class="container-fluid">
-		<div class="row justify-content-center row_1">
-			<div class="align-self-center">
-				<h1 class = "page-title">Analysis of Google Play Store Apps</h1>
-			</div>
-		</div>
-		<div class="row justify-content-center row_3">
-			<div class="align-self-center">
-				<p style="text-align:center">Introduction</p>
-			</div>
-		</div>
-		<div class="row justify-content-center row_2">
-			<div class="col-6" id="content-1">
-			</div>
-			<div class="col-6" id="vis_content-1">
-			</div>
-		</div>
-		<div class="row justify-content-center row_2">
-			<div class="col-6" id="content-2">
-				<p style="text-align:center">Text2/Image2</p>
-				<p style="text-align:center">(The height of the row would be modified later)</p>
-			</div>
-			<div class="col-6" id="vis_content-2">
-				<p style="text-align:center">Visualization2</p>
-				<p style="text-align:center">(The height of the row would be modified later)</p>
-			</div>
-		</div>
-		<div class="row justify-content-center row_2">
-			<div class="col-6" id="content-3">
-				<p style="text-align:center">Text3/Image3</p>
-				<p style="text-align:center">(The height of the row would be modified later)</p>
-			</div>
-			<div class="col-6" id="vis_content-3">
-				<p style="text-align:center">Visualization3</p>
-				<p style="text-align:center">(The height of the row would be modified later)</p>
-			</div>
-		</div>
-		<div class="row justify-content-center row_2">
-			<div class="col-6" id="content-4">
-				<p style="text-align:center">Text4/Image4</p>
-				<p style="text-align:center">(The height of the row would be modified later)</p>
-			</div>
-			<div class="col-6" id="vis_content-4">
-				<p style="text-align:center">Visualization4</p>
-				<p style="text-align:center">(The height of the row would be modified later)</p>
-			</div>
-		</div>
-		<div class="row justify-content-center row_2">
-			<div class="col-6" id="content-5">
-				<p style="text-align:center">Text5/Image5</p>
-				<p style="text-align:center">(The height of the row would be modified later)</p>
-			</div>
-			<div class="col-6" id="vis_content-5">
-				<p style="text-align:center">Visualization5</p>
-				<p style="text-align:center">(The height of the row would be modified later)</p>
-			</div>
-		</div>
-		<div class="row justify-content-center row_3">
-			<div class="align-self-center">
-				<p style="text-align:center">Summary</p>
-			</div>
-		</div>
+<!-- * TO-DO * -->
+<div class="container-fluid">
+    <div class="row justify-content-center row_1">
+        <div class="align-self-center">
+            <h1 class="page-title">Analysis of Google Play Store Apps</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center row_3">
+        <div class="align-self-center">
+            <p style="text-align:center">Introduction</p>
+        </div>
+    </div>
+    <div class="row justify-content-center row_2">
+        <div class="col-6" id="content-1">
+        </div>
+        <div class="col-6" id="vis_content-1">
+        </div>
+    </div>
+    <div class="row justify-content-center row_2">
+        <div class="col-2" id="content-2">
+            <h5 style="text-align:center; color: white">What are the top installed apps by category, genre, type and
+                content
+                rating?</h5>
+        </div>
+        <div class="col-10" id="vis-2-container">
+            <div class="col-8">
+                <div class="container">
+                    <p style="font-weight: bold">Category: &nbsp; &nbsp;</p>
+                    <select id='categorySelector' class="custom-select align-self-center"
+                            style="width: 30%" onchange="getCategoryValues()">
+                        <option value="Category" selected>Category</option>
+                        <option value="Content Rating">Content Rating</option>
+                        <option value="Type">Type</option>
+                        <option value="Genres">Genres</option>
+                    </select>
+                    <p style="font-weight: bold; padding-left: 0.5rem">Category Value: &nbsp; &nbsp;</p>
+                    <select id='categoryValueSelector' class="custom-select align-self-center"
+                            style="width: 40%" onchange="categoryChange()">
+                    </select>
+                </div>
 
-	</div>
+            </div>
+            <div class="col-8" id="vis_content-2"></div>
 
-	<!-- embedding JS libraries -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        </div>
+    </div>
+    <div class="row justify-content-center row_2" style="padding-top: 0.5rem">
+        <div class="col-6" id="content-3">
+            <p style="text-align:center">Text3/Image3</p>
+            <p style="text-align:center">(The height of the row would be modified later)</p>
+        </div>
+        <div class="col-6" id="vis_content-3">
+            <p style="text-align:center">Visualization3</p>
+            <p style="text-align:center">(The height of the row would be modified later)</p>
+        </div>
+    </div>
+    <div class="row justify-content-center row_2">
+        <div class="col-6" id="content-4">
+            <p style="text-align:center">Text4/Image4</p>
+            <p style="text-align:center">(The height of the row would be modified later)</p>
+        </div>
+        <div class="col-6" id="vis_content-4">
+            <p style="text-align:center">Visualization4</p>
+            <p style="text-align:center">(The height of the row would be modified later)</p>
+        </div>
+    </div>
+    <div class="row justify-content-center row_2">
+        <div class="col-6" id="content-5">
+            <p style="text-align:center">Text5/Image5</p>
+            <p style="text-align:center">(The height of the row would be modified later)</p>
+        </div>
+        <div class="col-6" id="vis_content-5">
+            <p style="text-align:center">Visualization5</p>
+            <p style="text-align:center">(The height of the row would be modified later)</p>
+        </div>
+    </div>
+    <div class="row justify-content-center row_3">
+        <div class="align-self-center">
+            <p style="text-align:center">Summary</p>
+        </div>
+    </div>
 
-	<!-- d3 -->
-	<script src="https://d3js.org/d3.v6.min.js"></script>
+</div>
 
-	<!-- Your implementation -->
-	<script src="js/main.js"></script>
-	<script src="js/pieChart.js"></script>
+<!-- embedding JS libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+<!-- d3 -->
+<script src="https://d3js.org/d3.v6.min.js"></script>
+
+<!-- Your implementation -->
+<script src="js/main.js"></script>
+<script src="js/pieChart.js"></script>
+<script src="js/barChart.js"></script>
+<script src="js/helper.js"></script>
 </body>
 </html>
