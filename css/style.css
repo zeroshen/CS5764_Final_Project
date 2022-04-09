@@ -69,3 +69,13 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.tooltip h3{
+    text-align: left;
+    font: 14px sans-serif;
+    color: #dc3545;
+}
+.tooltip h4 {
+    text-align: left;
+    font: 10px sans-serif;
+}
