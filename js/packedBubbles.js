@@ -108,51 +108,51 @@ class PackedBubbles {
             .style("fill-opacity", 0.8)
             .attr("stroke", "black")
             .style("stroke-width", 1)
-            // .on("mousemove", function(event, d) {
-            //     d3.select(this)
-            //         .attr('stroke-width', '2px')
-            //         .attr('stroke', 'black')
-            //         .attr('fill', 'rgba(173,222,255,0.62)')
-            //
-            //     vis.tooltip
-            //         .style("opacity", 1)
-            //         .style("left", event.pageX - vis.width/4 + "px")
-            //         .style("top", event.pageY + 25 + "px")
-            //         .html(`<div style="border: thin solid grey; border-radius: 2px; background: lightgrey; padding: 10px">
-            //                      <h3>${d.App}<h3>
-            //                      <h4> Sentiment: ${d.Sentiment}</h4>
-            //                      <h4> Review: ${d.Translated_Review}</h4>
-            //                      <h4> Sentiment_Polarity: ${d.Sentiment_Polarity}</h4>
-            //                      <h4> Sentiment_Subjectivity: ${d.Sentiment_Subjectivity}</h4>
-            //                     </div>`);
-            // })
-            // .on('mouseout', function(event, d){
-            //     d3.select(this)
-            //         .attr('stroke-width', '0px')
-            //         .attr("fill", "#8E7060")
-            //
-            //     vis.tooltip
-            //         .style("opacity", 0)
-            //         .style("left", 0)
-            //         .style("top", 0)
-            //         .html(``);
-            // })
-            // .call(d3.drag() // call specific function when circle is dragged
-            //         .on("start", function (event, d) {
-            //             if (!event.active) vis.simulation.alphaTarget(.03).restart();
-            //                 d.fx = d.x;
-            //                 d.fy = d.y;
-            //          })
-            //         .on("drag", function (event, d) {
-            //             d.fx = event.x;
-            //             d.fy = event.y;
-            //         })
-            //         .on("end", function (event, d) {
-            //             if (!event.active) vis.simulation.alphaTarget(.03);
-            //             d.fx = null;
-            //             d.fy = null;
-            //         })
-            // );
+            .on("mousemove", function(event, d) {
+                d3.select(this)
+                    .attr('stroke-width', '2px')
+                    .attr('stroke', 'black')
+                    .attr('fill', 'rgba(173,222,255,0.62)')
+
+                vis.tooltip
+                    .style("opacity", 1)
+                    .style("left", event.pageX - vis.width/4 + "px")
+                    .style("top", event.pageY + 25 + "px")
+                    .html(`<div style="border: thin solid grey; border-radius: 2px; background: lightgrey; padding: 10px">
+                                 <h3>${d.App}<h3>
+                                 <h4> Sentiment: ${d.Sentiment}</h4>
+                                 <h4> Review: ${d.Translated_Review}</h4>
+                                 <h4> Sentiment_Polarity: ${d.Sentiment_Polarity}</h4>
+                                 <h4> Sentiment_Subjectivity: ${d.Sentiment_Subjectivity}</h4>
+                                </div>`);
+            })
+            .on('mouseout', function(event, d){
+                d3.select(this)
+                    .attr('stroke-width', '0px')
+                    .attr("fill", "#8E7060")
+
+                vis.tooltip
+                    .style("opacity", 0)
+                    .style("left", 0)
+                    .style("top", 0)
+                    .html(``);
+            })
+            .call(d3.drag() // call specific function when circle is dragged
+                    .on("start", function (event, d) {
+                        if (!event.active) vis.simulation.alphaTarget(.03).restart();
+                            d.fx = d.x;
+                            d.fy = d.y;
+                     })
+                    .on("drag", function (event, d) {
+                        d.fx = event.x;
+                        d.fy = event.y;
+                    })
+                    .on("end", function (event, d) {
+                        if (!event.active) vis.simulation.alphaTarget(.03);
+                        d.fx = null;
+                        d.fy = null;
+                    })
+            );
 
         vis.simulation
             .nodes(vis.data)
