@@ -14,6 +14,7 @@ let configs = [
     {key: "ContentRating", title: "ContentRating"}
 ];
 
+
 // Date parser to convert strings to date objects
 let parseDate = d3.timeParse("%B %d, %Y");
 
@@ -65,7 +66,6 @@ d3.csv("data/googleplaystore_converted.csv", (row) => {
     barChart = new BarChart('vis_content-2', data)
 })
 
-
 d3.csv("data/googleplaystore_converted.csv").then(data => {
 
 
@@ -82,7 +82,7 @@ d3.csv("data/googleplaystore_converted.csv").then(data => {
 
     console.log(data);
     piecharts[0] = new PieChartI('content-3', data, configs[0]);
-    piecharts[0] = new PieChartI('vis_content-3', data, configs[1]);
+    piecharts[1] = new PieChartI('vis_content-3', data, configs[1]);
 
 
 
@@ -99,7 +99,9 @@ function brushed() {
     // Convert the extent into the corresponding domain values
     let selectionDomain = selectionRange.map(areachart.xScale.invert);
 
+    piecharts.forEach(function(d) {
+        d.selectionChanged(selectionDomain);
+    })
+
 
 }
-
-

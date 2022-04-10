@@ -5,6 +5,7 @@ class PieChartI {
         this.data = data;
         this.config = config;
         this.displayData = data;
+        this.displayData2 = data;
         this.circleColors = ['#b2182b', '#d6604d', '#f4a582', '#fddbc7', '#d6604d'];
 
         console.log(this.displayData);
@@ -36,7 +37,7 @@ class PieChartI {
         vis.svg.append('g')
             .attr('class', 'title pie-title')
             .append('text')
-            .text('Title for Pie Chart')
+            .text(vis.config.title)
             .attr('transform', `translate(${vis.width / 2}, 20)`)
             .attr('text-anchor', 'middle');
 
@@ -92,18 +93,33 @@ class PieChartI {
         console.log(vis.sorted)
         // * TO-DO *
 
-        vis.displayData = []
+        vis.displayData2 = []
 
         // generate random data
-        for (let i = 0; i < 5; i++) {
-            let random = vis.sorted[i].value
-            console.log(vis.sorted[i].key)
-            vis.displayData.push({
-                value: random,
-                string: vis.sorted[i].key,
-                color: vis.circleColors[i]
-            })
+        if (vis.sorted.length < 5){
+            for (let i = 0; i < vis.sorted.length; i++) {
+                let random = vis.sorted[i].value
+                console.log(vis.sorted[i].key)
+                vis.displayData2.push({
+                    value: random,
+                    string: vis.sorted[i].key,
+                    color: vis.circleColors[i]
+                })
+            }
         }
+        else{
+            for (let i = 0; i < 5; i++) {
+                let random = vis.sorted[i].value
+                console.log(vis.sorted[i].key)
+                vis.displayData2.push({
+                    value: random,
+                    string: vis.sorted[i].key,
+                    color: vis.circleColors[i]
+                })
+            }
+        }
+
+        console.log(vis.displayData2)
 
 
         // Update the visualization
@@ -120,7 +136,7 @@ class PieChartI {
         let vis = this;
 
         vis.arcChart = vis.pieChartGroup.selectAll(".arc")
-            .data(vis.pie(vis.displayData))
+            .data(vis.pie(vis.displayData2))
 
 
 
@@ -170,12 +186,14 @@ class PieChartI {
         let vis = this;
 
         // Filter data accordingly without changing the original data
-
-
         // * TO-DO *
-        vis.displayData=vis.data.filter(function(d) {
-            return ((d.survey >= brushRegion[0]) && (d.survey <= brushRegion[1]))
+        vis.displayData = []
+
+        vis.displayData = vis.data.filter(function(d) {
+            return ((d.LastUpdated >= brushRegion[0]) && (d.LastUpdated <= brushRegion[1]))
         });
+
+        console.log(vis.displayData)
 
         // Update the visualization
         vis.wrangleData();
