@@ -105,3 +105,31 @@ function brushed() {
 
 
 }
+
+
+// load review data
+loadData();
+
+function loadData() {
+    d3.csv("data/googleplaystore_user_reviews_cleaned.csv", (data)=>{
+
+        // consider to merge with the dataset 1 to get app category and other infor
+        // do this later
+
+        // convert strings to numbers
+        data.Sentiment_Polarity = +data.Sentiment_Polarity;
+        data.Sentiment_absPolarity = Math.abs(+data.Sentiment_Polarity);
+        data.Sentiment_Subjectivity = +data.Sentiment_Subjectivity;
+        return data
+    }). then((data)=>{
+
+        console.log('review data:', data)
+        // instantiate packedBubbles
+        // myBubbles = new PackedBubbles("bubble-chart", data);
+
+        // too much data if use all review data, need to find a way to aggregate the data later
+        myBubbles = new PackedBubbles("bubble-chart", data.slice(0, 250));
+
+    });
+}
+

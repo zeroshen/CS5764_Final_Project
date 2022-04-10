@@ -50,16 +50,16 @@ class PackedBubbles {
             .attr('class', "tooltip")
             .attr('id', 'bubbleTooltip')
 
+
         // Features of the forces applied to the nodes:
         vis.simulation = d3.forceSimulation()
             .force("center", d3.forceCenter().x(vis.width / 2).y(vis.height / 2)) // Attraction to the center of the svg area
             .force("charge", d3.forceManyBody().strength(.1)) // Nodes are attracted one each other of value is > 0
             .force("collide", d3.forceCollide().strength(.2).radius(function(d){
-                // return (vis.size(Math.abs(d.Sentiment_Polarity))+3)
-                return 30
+                return (vis.size(Math.abs(d.Sentiment_Polarity))+3)
+                // return 30
             })
                 .iterations(1)) // Force that avoids circle overlapping
-
 
 
         // (Filter, aggregate, modify data)
@@ -91,13 +91,10 @@ class PackedBubbles {
 
 
 
-
         // plot bubbles
-        vis.bubble = vis.svg.append("g").selectAll("circle")
-            .data(vis.data);
-
-        // enter
-        vis.bubble
+        vis.bubble = vis.svg.append("g")
+            .selectAll("circle")
+            .data(vis.data)
             .enter()
             .append("circle")
             .attr("class", "bubble")
