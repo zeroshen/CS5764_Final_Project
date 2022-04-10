@@ -81,8 +81,8 @@ class BarChart {
             case 'Category':
                 vis.displayData = mainData.filter(d => d['Category'] === selectedCategoryValue)
                 break;
-            case 'Content Rating':
-                vis.displayData = mainData.filter(d => d['Content Rating'] === selectedCategoryValue)
+            case 'ContentRating':
+                vis.displayData = mainData.filter(d => d['ContentRating'] === selectedCategoryValue)
                 break;
             case 'Type':
                 vis.displayData = mainData.filter(d => d['Type'] === selectedCategoryValue)
