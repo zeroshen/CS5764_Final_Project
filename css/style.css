@@ -43,6 +43,18 @@
     border-style: groove;
     background-color: brown;
 }
+#text-1 {
+    border-style: groove;
+    background-color: grey;
+}
+#text-3 {
+    border-style: groove;
+    background-color: grey;
+}
+#text-4 {
+    border-style: groove;
+    background-color: grey;
+}
 
 #vis-2-container {
     border-style: groove;
