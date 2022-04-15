@@ -156,7 +156,7 @@ class PackedBubbles {
             .on("tick", function(d){
                 vis.bubble
                     .attr("cx", function(d){
-                        console.log('test:', d.x)
+                        // console.log('test:', d.x)
                         return d.x; })
                     .attr("cy", function(d){ return d.y; })
             });
