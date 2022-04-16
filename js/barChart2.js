@@ -52,13 +52,13 @@ class BarChart2 {
             .append("g")
             .attr("class", "axis y-axis");
 
-        vis.yLabel = d3
-            .select("g")
-            .append("text")
-            .text("Stores")
-            .attr("class", "axis-label")
-            .attr("x",100)
-            .attr("y", 100);
+        // vis.yLabel = d3
+        //     .select("g")
+        //     .append("text")
+        //     .text("Stores")
+        //     .attr("class", "axis-label")
+        //     .attr("x",100)
+        //     .attr("y", 100);
 
         this.wrangleData();
 
@@ -84,8 +84,21 @@ class BarChart2 {
         //Add this adapted to your data
         vis.x.domain(vis.data.map(d => d.price));
 
-        vis.svg.select(".axis-label")
-            .text("Billion USD")
+        vis.svg.append("text")      // text label for the x axis
+            .attr("x", -50 )
+            .attr("y",  50 )
+            .attr("transform", "translate(-80) rotate(-90)")
+            .style("text-anchor", "middle")
+            .text("Number of Apps");
+
+        vis.svg.append("text")      // text label for the x axis
+            .attr("x", 300 )
+            .attr("y", 375 )
+            // .attr("transform", "translate(-80) rotate(-90)")
+            .style("text-anchor", "middle")
+            .text("Price of the Apps");
+        // vis.svg.select(".axis-label")
+        //     .text("Billion USD")
 
         vis.xAxis.scale(vis.x);
         vis.yAxis.scale(vis.y);

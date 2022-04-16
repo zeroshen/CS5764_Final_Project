@@ -159,15 +159,10 @@ function loadData() {
             priceQ.push(d.price);
         })
 
-        let data = [{numApps: numApps1, price: "0$ < Price of the App <= 3.49$"}, {numApps: numApps2, price: "3.49$ < Price of the App <= 6.99$"}]
+        let data = [{numApps: numApps1, price: "0$ < X <= 3.49$"}, {numApps: numApps2, price: "3.49$ < X <= 6.99$"}]
 
         myBarChart = new BarChart2('vis_content-5', data);
 
-        // console.log(Math.max.apply(Math, priceQ));
-        // console.log(Math.min.apply(Math, priceQ));
-        // console.log(countPaid);
-        // console.log(numApps1);
-        // console.log(numApps2);
     });
 
 
