@@ -6,7 +6,7 @@ class PieChartI {
         this.config = config;
         this.displayData = data;
         this.displayData2 = data;
-        this.circleColors = ['#b2182b', '#d6604d', '#f4a582', '#fddbc7', '#d6604d'];
+        this.circleColors = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600'];
 
         console.log(this.displayData);
 
@@ -23,7 +23,7 @@ class PieChartI {
     initVis() {
         let vis = this;
 
-        vis.margin = {top: 10, right: 50, bottom: 10, left: 50};
+        vis.margin = {top: 10, right: 10, bottom: 10, left: 10};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
@@ -158,7 +158,7 @@ class PieChartI {
                     .html(`
                         <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
                              <h3> Kind: ${d.data.string}<h3>
-                             <h4> value: ${d.value}</h4>                            
+                             <h4> Counts: ${d.value}</h4>                            
                          </div>`);
             })
             .on('mouseout', function(event, d){

@@ -10,15 +10,19 @@
 
 .row_1 {
     height: 12vh;
-    background: #22223b;
+    background: #2B7A78;
 }
 
 .row_2 {
     height: 60vh;
+    border-style: groove;
+    background-color: #DEF2F1;
 }
 
 .row_3 {
     height: 30vh;
+    border-style: groove;
+    background-color: #3AAFA9;
 }
 
 
@@ -28,6 +32,24 @@
 
 .bar {
     fill: #357EC7;
+}
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #ccc;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #04AA6D;
+    width: 0%;
 }
 
 .bars-label {
@@ -39,26 +61,10 @@
     font-weight: bold;
 }
 
-#content-2 {
-    border-style: groove;
-    background-color: brown;
-}
-#text-1 {
-    border-style: groove;
-    background-color: grey;
-}
-#text-3 {
-    border-style: groove;
-    background-color: grey;
-}
-#text-4 {
-    border-style: groove;
-    background-color: grey;
-}
 
-#vis-2-container {
-    border-style: groove;
-    background-color: lightgrey;
+
+.area{
+    fill: #357EC7;
 }
 
 .container {
@@ -84,10 +90,14 @@
 
 .tooltip h3{
     text-align: left;
-    font: 14px sans-serif;
+    font: 18px sans-serif;
     color: #dc3545;
 }
 .tooltip h4 {
     text-align: left;
-    font: 10px sans-serif;
+    font: 14px sans-serif;
+}
+.text-context {
+    padding-right: 30vh;
+    padding-left: 30vh;
 }
