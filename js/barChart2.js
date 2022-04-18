@@ -87,13 +87,15 @@ class BarChart2 {
         vis.svg.append("text")      // text label for the x axis
             .attr("x", -50 )
             .attr("y",  50 )
+            .attr("font-weight", "bold")
             .attr("transform", "translate(-80) rotate(-90)")
             .style("text-anchor", "middle")
             .text("Number of Apps");
 
         vis.svg.append("text")      // text label for the x axis
             .attr("x", 300 )
-            .attr("y", 375 )
+            .attr("y", 365 )
+            .attr("font-weight", "bold")
             // .attr("transform", "translate(-80) rotate(-90)")
             .style("text-anchor", "middle")
             .text("Price of the Apps");
@@ -125,6 +127,7 @@ class BarChart2 {
             .transition()
             .duration(500)
             .style("opacity", 0.5)
+            .attr("stroke", "black")
             .attr("x", d => vis.x(d.price))
             .transition()
             .duration(100)
