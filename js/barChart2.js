@@ -88,7 +88,7 @@ class BarChart2 {
             .attr("x", -50 )
             .attr("y",  50 )
             .attr("font-weight", "bold")
-            .attr("transform", "translate(-80) rotate(-90)")
+            .attr("transform", "translate(-80, 100) rotate(-90)")
             .style("text-anchor", "middle")
             .text("Number of Apps");
 
