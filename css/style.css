@@ -101,3 +101,11 @@
     padding-right: 30vh;
     padding-left: 30vh;
 }
+
+.x-axis boxplot {
+    font-weight: bold;
+}
+
+.y-axis boxplot {
+    font-weight: bold;
+}

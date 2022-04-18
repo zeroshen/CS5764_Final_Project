@@ -8,6 +8,7 @@ let barChart;
 let mainData = [];
 let areachart;
 let piecharts = [];
+let boxPlot;
 let numApps1 = 0;
 let numApps2 = 0;
 
@@ -175,3 +176,13 @@ function loadData() {
     });
 
 
+// box plot visualization
+d3.csv("data/googleplaystore_converted.csv", (row) => {
+
+    row.Rating = +row.Rating;
+    return row;
+
+}).then((data) => {
+
+    boxPlot = new BoxPlot('vis_content-6', data);
+});
