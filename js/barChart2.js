@@ -105,6 +105,16 @@ class BarChart2 {
         vis.xAxis.scale(vis.x);
         vis.yAxis.scale(vis.y);
 
+        vis.yAxis
+            .tickFormat(function(e){
+                if(Math.floor(e) != e)
+                {
+                    return;
+                }
+
+                return e;
+            });
+
         vis.svg
             .select(".x-axis")
             .transition()
