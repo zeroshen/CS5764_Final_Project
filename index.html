@@ -130,13 +130,18 @@
 
     <div class="row justify-content-center row_2">
 
-        <div class="col-md-8 offset 2">
-            <!-- graph -->
-            <div class="row justify-content-center">
-                <div class="align-self-center" id="bubble-chart" style="height: 100%; width: 100%"></div>
-            </div>
-
+        <div class="col-md-6" id="voronoi-chart">
         </div>
+        <div class="col-md-6" id="bubble-chart">
+        </div>
+
+<!--        <div class="col-md-6">-->
+<!--&lt;!&ndash;            &lt;!&ndash; graph &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="row justify-content-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="align-self-center" id="bubble-chart" style="height: 100%; width: 100%"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--        </div>-->
 
     </div>
     <div class="row justify-content-center row_3">
@@ -169,6 +174,10 @@
 
 <!-- d3 -->
 <script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-hierarchy@3"></script>
+<script src="https://rawcdn.githack.com/Kcnarf/d3-weighted-voronoi/v1.1.0/build/d3-weighted-voronoi.js"></script>
+<script src="https://rawcdn.githack.com/Kcnarf/d3-voronoi-map/v2.1.0/build/d3-voronoi-map.js"></script>
+<script src="https://rawcdn.githack.com/Kcnarf/d3-voronoi-treemap/v1.1.1/build/d3-voronoi-treemap.js"></script>
 
 
 <!-- Your implementation -->
@@ -176,6 +185,7 @@
 <script src="js/pieChart.js"></script>
 <script src="js/barChart.js"></script>
 <script src="js/helper.js"></script>
+<script src="js/voronoiTreemap.js"></script>
 <script src="js/packedBubbles.js"></script>
 <script src="js/areachart.js"></script>
 <script src="js/pieChartI.js"></script>

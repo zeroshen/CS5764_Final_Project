@@ -11,6 +11,7 @@ let piecharts = [];
 let boxPlot;
 let numApps1 = 0;
 let numApps2 = 0;
+let myVoronoi;
 
 let configs = [
     {key: "Category", title: "Category"},
@@ -119,32 +120,6 @@ function brushed() {
 }
 
 
-// load review data
-loadData();
-
-function loadData() {
-    d3.csv("data/googleplaystore_user_reviews_cleaned.csv", (data)=>{
-
-        // consider to merge with the dataset 1 to get app category and other infor
-        // do this later
-
-        // convert strings to numbers
-        data.Sentiment_Polarity = +data.Sentiment_Polarity;
-        data.Sentiment_absPolarity = Math.abs(+data.Sentiment_Polarity);
-        data.Sentiment_Subjectivity = +data.Sentiment_Subjectivity;
-        return data
-    }). then((data)=>{
-
-        console.log('review data:', data)
-        // instantiate packedBubbles
-        // myBubbles = new PackedBubbles("bubble-chart", data);
-
-        // too much data if use all review data, need to find a way to aggregate the data later
-        myBubbles = new PackedBubbles("bubble-chart", data.slice(0, 250));
-
-    });
-}
-
     d3.csv("data/googleplaystore_converted.csv", (row) => {
 
         if (row.Price > 0 && row.Price <= 3.49 && row.Installs >= 10000000) {
@@ -186,3 +161,56 @@ d3.csv("data/googleplaystore_converted.csv", (row) => {
 
     boxPlot = new BoxPlot('vis_content-6', data);
 });
+
+
+
+
+
+// load review data
+let promises = [
+    // app contentrating
+    d3.csv("data/googleplaystore_converted.csv", (data) => {
+
+        data.Rating = +data.Rating;
+        data.Installs = +data.Installs;
+        data.Reviews = +data.Reviews;
+        data.Price = +data.Price;
+        return data;
+
+    }),
+    d3.csv("data/googleplaystore_user_reviews_cleaned.csv", (data)=>{
+
+        // convert strings to numbers
+        data.Sentiment_Polarity = +data.Sentiment_Polarity;
+        data.Sentiment_absPolarity = Math.abs(+data.Sentiment_Polarity);
+        data.Sentiment_Subjectivity = +data.Sentiment_Subjectivity;
+        return data;
+    })
+];
+
+
+
+
+Promise.all(promises)
+    .then(function (data) {
+        reviewVis(data)
+    })
+    .catch(function (err) {
+        console.log(err)
+    });
+
+
+function reviewVis(data) {
+    let rateData = data[0]
+    let reviewData = data[1]
+
+    console.log('rate data:', rateData)
+    console.log('review data:', reviewData)
+
+    // create voronoi-treemap
+    myVoronoi = new VoronoiTreemap("voronoi-chart", rateData, reviewData);
+
+    // // create bubble chart
+    myBubbles = new PackedBubbles("bubble-chart", reviewData.slice(0, 250));
+
+}
