@@ -41,4 +41,7 @@ function getCategoryValues() {
         }
         select.innerHTML += "<option value=\"" + opt + "\">" + opt + "</option>";
     })
+
+    selectedCategoryValue = document.getElementById('categoryValueSelector').value;
+    barChart.wrangleData();
 }
