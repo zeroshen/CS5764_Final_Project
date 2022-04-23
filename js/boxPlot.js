@@ -20,7 +20,7 @@ class BoxPlot {
         vis.margin = {top: 100, right: 40, bottom: 10, left: 40};
 
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
-        vis.height = 500 - vis.margin.top - vis.margin.bottom;
+        vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
