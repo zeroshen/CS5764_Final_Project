@@ -68,7 +68,7 @@ class VoronoiTreemap {
             .attr("id", "title")
             .attr("transform", "translate("+[vis.width/2, -60]+")")
             .attr("text-anchor", "middle")
-            .text("Top and bottom " + vis.slice + " rated applications for each 'ContentRating' category")
+            .text("Top and bottom " + vis.slice + " rated applications for each 'Content Rating' category")
 
 
         // drawLegends(rootData);
@@ -294,7 +294,7 @@ class VoronoiTreemap {
         vis.legendContainer
             .append("text")
             .attr("transform", "translate("+[0, -nodes.length*(legendHeight+interLegend)-5]+")")
-            .text("ContentRating");
+            .text("Content Rating");
 
 
     }
