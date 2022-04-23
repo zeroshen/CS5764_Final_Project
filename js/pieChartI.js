@@ -119,7 +119,7 @@ class PieChartI {
             }
         }
 
-        console.log(vis.displayData2)
+
 
 
         // Update the visualization

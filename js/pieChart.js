@@ -84,7 +84,7 @@ class PieChart {
     // updateVis method
     updateVis() {
         let vis = this;
-        console.log(vis.displayData);
+
         // TODO
         // Bind data
         vis.arcs = vis.pieChartGroup.selectAll(".arc")
