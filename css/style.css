@@ -98,8 +98,8 @@
     font: 14px sans-serif;
 }
 .text-context {
-    padding-right: 30vh;
-    padding-left: 30vh;
+    padding-right: 15vh;
+    padding-left: 15vh;
 }
 
 .x-axis boxplot {
