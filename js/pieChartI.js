@@ -8,7 +8,6 @@ class PieChartI {
         this.displayData2 = data;
         this.circleColors = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600'];
 
-        console.log(this.displayData);
 
         this.initVis();
     }
@@ -88,9 +87,8 @@ class PieChartI {
         vis.rollupValue = d3.rollup(vis.displayData, leaves=>leaves.length, d=>d[vis.config.key]);
         vis.arrayValue = Array.from(vis.rollupValue, ([key, value]) => ({key, value}));
 
-        console.log(vis.arrayValue)
         vis.sorted= vis.arrayValue.sort((a,b) => b.value - a.value);
-        console.log(vis.sorted)
+
         // * TO-DO *
 
         vis.displayData2 = []
@@ -99,7 +97,6 @@ class PieChartI {
         if (vis.sorted.length < 5){
             for (let i = 0; i < vis.sorted.length; i++) {
                 let random = vis.sorted[i].value
-                console.log(vis.sorted[i].key)
                 vis.displayData2.push({
                     value: random,
                     string: vis.sorted[i].key,
@@ -110,7 +107,6 @@ class PieChartI {
         else{
             for (let i = 0; i < 5; i++) {
                 let random = vis.sorted[i].value
-                console.log(vis.sorted[i].key)
                 vis.displayData2.push({
                     value: random,
                     string: vis.sorted[i].key,
