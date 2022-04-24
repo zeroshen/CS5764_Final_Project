@@ -34,13 +34,13 @@ class BoxPlot {
             .attr("class", "boxPlotTitle")
             .text("Distribution of Rating per Category");
 
-        vis.svg.append("text")      // text label for the x axis
-            .attr("x", 420)
-            .attr("y", 355)
-            .attr("font-weight", "bold")
-            // .attr("transform", "translate(-80) rotate(-90)")
-            .style("text-anchor", "middle")
-            .text("Category");
+        // vis.svg.append("text")      // text label for the x axis
+        //     .attr("x", 420)
+        //     .attr("y", 355)
+        //     .attr("font-weight", "bold")
+        //     // .attr("transform", "translate(-80) rotate(-90)")
+        //     .style("text-anchor", "middle")
+        //     .text("Category");
 
         vis.svg.append("text")      // text label for the y axis
             .attr("x", -90)

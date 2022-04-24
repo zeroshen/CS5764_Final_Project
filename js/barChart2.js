@@ -93,13 +93,13 @@ class BarChart2 {
             .style("text-anchor", "middle")
             .text("Number of Apps");
 
-        vis.svg.append("text")      // text label for the x axis
-            .attr("x", 300)
-            .attr("y", 395)
-            .attr("font-weight", "bold")
-            // .attr("transform", "translate(-80) rotate(-90)")
-            .style("text-anchor", "middle")
-            .text("Price of the Apps");
+        // vis.svg.append("text")      // text label for the x axis
+        //     .attr("x", 300)
+        //     .attr("y", 395)
+        //     .attr("font-weight", "bold")
+        //     // .attr("transform", "translate(-80) rotate(-90)")
+        //     .style("text-anchor", "middle")
+        //     .text("Price of the Apps");
         // vis.svg.select(".axis-label")
         //     .text("Billion USD")
 
