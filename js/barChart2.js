@@ -1,4 +1,3 @@
-
 class BarChart2 {
 
     constructor(parentElement, data) {
@@ -16,7 +15,7 @@ class BarChart2 {
 
         // SVG drawing area
 
-        vis.margin = { top: 50, right: 30, bottom: 90, left: 60 };
+        vis.margin = {top: 50, right: 30, bottom: 90, left: 60};
 
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right,
             vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
@@ -78,23 +77,25 @@ class BarChart2 {
 
         vis.y = d3
             .scaleLinear()
-            .domain([0, d3.max(vis.data, function(d) { return d.numApps; })])
+            .domain([0, d3.max(vis.data, function (d) {
+                return d.numApps;
+            })])
             .range([vis.height, 0]);
 
         //Add this adapted to your data
         vis.x.domain(vis.data.map(d => d.price));
 
         vis.svg.append("text")      // text label for the x axis
-            .attr("x", -50 )
-            .attr("y",  50 )
+            .attr("x", -50)
+            .attr("y", 50)
             .attr("font-weight", "bold")
             .attr("transform", "translate(-80, 100) rotate(-90)")
             .style("text-anchor", "middle")
             .text("Number of Apps");
 
         vis.svg.append("text")      // text label for the x axis
-            .attr("x", 300 )
-            .attr("y", 395 )
+            .attr("x", 300)
+            .attr("y", 395)
             .attr("font-weight", "bold")
             // .attr("transform", "translate(-80) rotate(-90)")
             .style("text-anchor", "middle")
@@ -106,9 +107,8 @@ class BarChart2 {
         vis.yAxis.scale(vis.y);
 
         vis.yAxis
-            .tickFormat(function(e){
-                if(Math.floor(e) != e)
-                {
+            .tickFormat(function (e) {
+                if (Math.floor(e) != e) {
                     return;
                 }
 
@@ -117,11 +117,13 @@ class BarChart2 {
 
         vis.svg
             .select(".x-axis")
+            .attr("class", "xAxisChart2")
             .transition()
             .duration(500)
             .call(vis.xAxis);
         vis.svg
             .select(".y-axis")
+            .attr("class", "yAxisChart2")
             .transition()
             .duration(500)
             .call(vis.yAxis);

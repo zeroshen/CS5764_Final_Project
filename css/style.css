@@ -61,6 +61,10 @@
     font-weight: bold;
 }
 
+.boxPlotTitle {
+    font-weight: bold;
+    font-size: 20px;
+}
 
 
 .area{
@@ -102,10 +106,22 @@
     padding-left: 15vh;
 }
 
-.x-axis boxplot {
+.yAxisBoxPlot {
     font-weight: bold;
+    font-size: 15px;
 }
 
-.y-axis boxplot {
+.xAxisBoxPlot {
     font-weight: bold;
+    font-size: 15px;
+}
+
+.xAxisChart2 {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.yAxisChart2 {
+    font-weight: bold;
+    font-size: 15px;
 }

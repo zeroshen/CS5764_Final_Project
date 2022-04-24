@@ -17,7 +17,7 @@ class BoxPlot {
     initVis() {
         let vis = this;
 
-        vis.margin = {top: 100, right: 40, bottom: 30, left: 40};
+        vis.margin = {top: 100, right: 40, bottom: 70, left: 100};
 
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
@@ -31,8 +31,24 @@ class BoxPlot {
 
         vis.svg.append("text")
             .attr("y", -50)
-            .attr("class", "bargraph-title")
+            .attr("class", "boxPlotTitle")
             .text("Distribution of Rating per Category");
+
+        vis.svg.append("text")      // text label for the x axis
+            .attr("x", 420)
+            .attr("y", 355)
+            .attr("font-weight", "bold")
+            // .attr("transform", "translate(-80) rotate(-90)")
+            .style("text-anchor", "middle")
+            .text("Category");
+
+        vis.svg.append("text")      // text label for the y axis
+            .attr("x", -90)
+            .attr("y", 40)
+            .attr("font-weight", "bold")
+            .attr("transform", "translate(-80) rotate(-90)")
+            .style("text-anchor", "middle")
+            .text("Rating");
 
         vis.x = d3.scaleBand()
             .rangeRound([0, vis.width])
@@ -111,13 +127,13 @@ class BoxPlot {
         })]);
 
         vis.svg.append("g")
-            .attr("class", "x-axis boxplot")
+            .attr("class", "xAxisBoxPlot")
             .attr("transform", "translate(0," + (vis.height - 10) + ")")
             .call(d3.axisBottom(vis.x));
 
 
         vis.svg.append("g")
-            .attr("class", "y-axis boxplot")
+            .attr("class", "yAxisBoxPlot")
             .call(d3.axisLeft(vis.y));
 
         // Show the main vertical line
