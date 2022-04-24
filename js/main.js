@@ -12,14 +12,20 @@ let boxPlot;
 let numApps1 = 0;
 let numApps2 = 0;
 let myVoronoi;
+let myBubbles;
+let originalReviewData = [];
 
 let configs = [
     {key: "Category", title: "Category"},
     {key: "ContentRating", title: "ContentRating"}
 ];
 
+let format = d3.format(".2f")
 
-window.onscroll = function() {scrollBar()};
+
+window.onscroll = function () {
+    scrollBar()
+};
 
 function scrollBar() {
     var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -82,11 +88,11 @@ d3.csv("data/googleplaystore_converted.csv", (row) => {
 d3.csv("data/googleplaystore_converted.csv").then(data => {
 
 
-    data.forEach(function(d){
+    data.forEach(function (d) {
         d.LastUpdated = parseDate(d.LastUpdated);
     });
-    data = data.filter(function(d){
-        if(d.LastUpdated < new Date(2016, 1, 1)){
+    data = data.filter(function (d) {
+        if (d.LastUpdated < new Date(2016, 1, 1)) {
             return false;
         }
         return true;
@@ -98,8 +104,7 @@ d3.csv("data/googleplaystore_converted.csv").then(data => {
     piecharts[1] = new PieChartI('vis_content-3', data, configs[1]);
 
 
-
-    areachart = new AreaChart('content-4',data);
+    areachart = new AreaChart('content-4', data);
 });
 
 // React to 'brushed' event and update all bar charts
@@ -112,7 +117,7 @@ function brushed() {
     // Convert the extent into the corresponding domain values
     let selectionDomain = selectionRange.map(areachart.xScale.invert);
 
-    piecharts.forEach(function(d) {
+    piecharts.forEach(function (d) {
         d.selectionChanged(selectionDomain);
     })
 
@@ -120,35 +125,35 @@ function brushed() {
 }
 
 
-    d3.csv("data/googleplaystore_converted.csv", (row) => {
+d3.csv("data/googleplaystore_converted.csv", (row) => {
 
-        if (row.Price > 0 && row.Price <= 3.49 && row.Installs >= 10000000) {
-            numApps1 += 1;
-            return {
-                installs: +row.Installs,
-                price: +row.Price
-            };
-        } else if (row.Price > 3.49 && row.Price <= 6.99 && row.Installs >= 10000000) {
-            numApps2 += 1;
-            return {
-                installs: +row.Installs,
-                price: +row.Price
-            };
-        }
-    }).then(csv => {
+    if (row.Price > 0 && row.Price <= 3.49 && row.Installs >= 10000000) {
+        numApps1 += 1;
+        return {
+            installs: +row.Installs,
+            price: +row.Price
+        };
+    } else if (row.Price > 3.49 && row.Price <= 6.99 && row.Installs >= 10000000) {
+        numApps2 += 1;
+        return {
+            installs: +row.Installs,
+            price: +row.Price
+        };
+    }
+}).then(csv => {
 
-        let priceQ = [];
+    let priceQ = [];
 
-        csv.forEach(function (d) {
-            // console.log(d.price);
-            priceQ.push(d.price);
-        })
+    csv.forEach(function (d) {
+        // console.log(d.price);
+        priceQ.push(d.price);
+    })
 
-        let data = [{numApps: numApps1, price: "0$ < X <= 3.49$"}, {numApps: numApps2, price: "3.49$ < X <= 6.99$"}]
+    let data = [{numApps: numApps1, price: "0$ < X <= 3.49$"}, {numApps: numApps2, price: "3.49$ < X <= 6.99$"}]
 
-        myBarChart = new BarChart2('vis_content-5', data);
+    myBarChart = new BarChart2('vis_content-5', data);
 
-    });
+});
 
 
 // box plot visualization
@@ -163,13 +168,10 @@ d3.csv("data/googleplaystore_converted.csv", (row) => {
 });
 
 
-
-
-
 // load review data
 let promises = [
     // app contentrating
-    d3.csv("data/googleplaystore_converted.csv", (data) => {
+    d3.csv("data/googleplaystore_converted_uniqueReviews.csv", (data) => {
 
         data.Rating = +data.Rating;
         data.Installs = +data.Installs;
@@ -178,7 +180,7 @@ let promises = [
         return data;
 
     }),
-    d3.csv("data/googleplaystore_user_reviews_cleaned.csv", (data)=>{
+    d3.csv("data/googleplaystore_user_reviews_cleaned.csv", (data) => {
 
         // convert strings to numbers
         data.Sentiment_Polarity = +data.Sentiment_Polarity;
@@ -187,8 +189,6 @@ let promises = [
         return data;
     })
 ];
-
-
 
 
 Promise.all(promises)
@@ -207,10 +207,12 @@ function reviewVis(data) {
     console.log('rate data:', rateData)
     console.log('review data:', reviewData)
 
+    originalReviewData = reviewData;
+
     // create voronoi-treemap
     myVoronoi = new VoronoiTreemap("voronoi-chart", rateData, reviewData);
 
     // // create bubble chart
-    myBubbles = new PackedBubbles("bubble-chart", reviewData.slice(0, 250));
+    myBubbles = new PackedBubbles("bubble-chart", reviewData);
 
 }

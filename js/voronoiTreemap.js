@@ -16,9 +16,7 @@ class VoronoiTreemap {
         this.initVis();
 
 
-
     }
-
 
 
     /*
@@ -28,7 +26,7 @@ class VoronoiTreemap {
     initVis() {
         let vis = this;
 
-        vis.margin = { top: 100, right: 50, bottom: 100, left: 50 };
+        vis.margin = {top: 100, right: 50, bottom: 100, left: 50};
 
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
@@ -36,11 +34,11 @@ class VoronoiTreemap {
         // initialize voronoi treemap
         vis.voronoiTreemap = d3.voronoiTreemap();
         vis.treemapRadius = 100
-        vis.treemapCenter = [vis.width/2, vis.height/2+5]
+        vis.treemapCenter = [vis.width / 2, vis.height / 2 + 5]
         vis.selectedCategory = 'Installs'     //'Reviews'   //'Rating'  //'Installs'
-        vis.slice = 30
+        vis.slice = 50
 
-            // SVG drawing area
+        // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom);
@@ -53,22 +51,21 @@ class VoronoiTreemap {
         vis.treemapContainer = vis.drawingArea
             .append("g")
             .classed("treemap-container", true)
-            .attr("transform","translate("+vis.treemapCenter+")")
-
+            .attr("transform", "translate(" + vis.treemapCenter + ")")
 
 
         // Scales and axes
         vis.fontScale = d3.scaleLinear()
-            .range([8, 16])
+            .range([8, 20])
             .clamp(true);
 
 
         // draw Title
         vis.drawingArea.append("text")
             .attr("id", "title")
-            .attr("transform", "translate("+[vis.width/2, -60]+")")
+            .attr("transform", "translate(" + [vis.width / 2, -60] + ")")
             .attr("text-anchor", "middle")
-            .text("Top and bottom " + vis.slice + " rated applications for each 'Content Rating' category")
+            .text("Top " + vis.slice + " installed applications for each 'Content Rating' category")
 
 
         // drawLegends(rootData);
@@ -79,11 +76,9 @@ class VoronoiTreemap {
             .attr('id', 'voronoiTooltip')
 
 
-
         // (Filter, aggregate, modify data)
         vis.wrangleData();
     }
-
 
 
     /*
@@ -102,29 +97,33 @@ class VoronoiTreemap {
 
             let contentRating_list = [...new Set(arry.map(item => item[roots.name]))];
             let color_list = ["#f58321", "#ef1621", "#77bc45",
-                "#4aaaea", "#f575a3","#592c94"]
+                "#4aaaea", "#f575a3", "#592c94"]
 
-            contentRating_list.forEach((name, i)=>{
-                let filtered_arry = arry.filter(function(d) {
-                    return d[roots.name]===name
-                })
-                // console.log('filtered_data:', filtered_arry)
+            contentRating_list.forEach((name, i) => {
+                    let filtered_arry = arry.filter(function (d) {
+                        return d[roots.name] === name
+                    })
+                    // console.log('filtered_data:', filtered_arry)
 
-                // Sort and then filter by top 10
-                filtered_arry.sort((a,b) => {return b[vis.selectedCategory] - a[vis.selectedCategory]})
+                    // select apps which have review data?
 
-                let selected_array = filtered_arry.slice(0, vis.slice)
-                // let selected_array = filtered_arry.slice(0, vis.slice).concat(
+                    // Sort and then filter by top 10
+                    filtered_arry.sort((a, b) => {
+                        return b[vis.selectedCategory] - a[vis.selectedCategory]
+                    })
+
+                    let selected_array = filtered_arry.slice(0, vis.slice)
+                    // let selected_array = filtered_arry.slice(0, vis.slice).concat(
                     //     filtered_arry.slice(filtered_arry.length-vis.slice, filtered_arry.length))
 
 
-                let cat = {
-                    "name": name,
-                    "color": color_list[i],
-                    "children":selected_array
-                };
+                    let cat = {
+                        "name": name,
+                        "color": color_list[i],
+                        "children": selected_array
+                    };
 
-                roots.children.push(cat);
+                    roots.children.push(cat);
 
                 }
             )
@@ -138,16 +137,15 @@ class VoronoiTreemap {
         console.log('Displaydata:', vis.displayData)
 
 
-
         // set polygon size
         function computeCirclingPolygon(radius) {
             let points = 60,
-                increment = 2*Math.PI/points,
+                increment = 2 * Math.PI / points,
                 circlingPolygon = [];
 
-            for (let a=0, i=0; i<points; i++, a+=increment) {
+            for (let a = 0, i = 0; i < points; i++, a += increment) {
                 circlingPolygon.push(
-                    [radius + radius*Math.cos(a), radius + radius*Math.sin(a)]
+                    [radius + radius * Math.cos(a), radius + radius * Math.sin(a)]
                 )
             }
 
@@ -162,7 +160,6 @@ class VoronoiTreemap {
     }
 
 
-
     /*
      * The drawing function
      */
@@ -173,19 +170,24 @@ class VoronoiTreemap {
         // vis.fontScale.domain([0, 20]);
 
         // console.log('ttt:', d3.min(vis.data, function (d){ return d.Installs}))
-        vis.fontScale.domain([d3.min(vis.data, function (d){ return d[vis.selectedCategory]}),
-                              d3.max(vis.data, function (d){ return d[vis.selectedCategory]})]);
-
+        vis.fontScale.domain([d3.min(vis.data, function (d) {
+            return d[vis.selectedCategory]
+        }),
+            d3.max(vis.data, function (d) {
+                return d[vis.selectedCategory]
+            })]);
 
 
         vis.treemapContainer.append("path")
             .classed("contentRating", true)
-            .attr("transform", "translate("+[-vis.treemapRadius,-vis.treemapRadius]+")")
-            .attr("d", "M"+vis.circlingPolygon.join(",")+"Z");
+            .attr("transform", "translate(" + [-vis.treemapRadius, -vis.treemapRadius] + ")")
+            .attr("d", "M" + vis.circlingPolygon.join(",") + "Z");
 
 
         vis.hierarchy = d3.hierarchy(vis.displayData)
-            .sum(function(d){ return d[vis.selectedCategory]; })  // also check out Rating and Reviews
+            .sum(function (d) {
+                return d[vis.selectedCategory];
+            })  // also check out Rating and Reviews
         console.log('hierarchy:', vis.hierarchy)
 
         vis.voronoiTreemap
@@ -200,24 +202,30 @@ class VoronoiTreemap {
             let cells = vis.treemapContainer
                 .append("g")
                 .classed('cells', true)
-                .attr("transform", "translate("+[-vis.treemapRadius,-vis.treemapRadius]+")")
+                .attr("transform", "translate(" + [-vis.treemapRadius, -vis.treemapRadius] + ")")
                 .selectAll(".cell")
                 .data(leaves)
                 .enter()
                 .append("path")
                 .classed("cell", true)
-                .attr("d", function(d){ return "M"+d.polygon.join(",")+"z"; })
-                .attr("fill", function(d){
+                .attr("d", function (d) {
+                    return "M" + d.polygon.join(",") + "z";
+                })
+                .attr("fill", function (d) {
                     return d.parent.data.color;
                 })
-                .on("mousemove", function(event, d) {
+                // .on("click", function (event, d) {
+                //     // update bubble chart on click
+                //     myBubbles.wrangleData(d.data.App);
+                // })
+                .on("mousemove", function (event, d) {
                     d3.select(this)
                         .attr('stroke-width', '2px')
                         .attr('stroke', 'black')
 
                     vis.tooltip
                         .style("opacity", 1)
-                        .style("left", event.pageX - vis.width/4 + "px")
+                        .style("left", event.pageX - vis.width / 4 + "px")
                         .style("top", event.pageY + 25 + "px")
                         .html(`<div style="border: thin solid grey; border-radius: 2px; background: lightgrey; padding: 10px">
                                  <h3>${d.data.App}<h3>
@@ -228,17 +236,11 @@ class VoronoiTreemap {
                                  <h4> Genres: ${d.data.Genres}</h4>
                                 </div>`);
 
-                    // create bubble chart
-                    //
-                    // vis.displayReview = vis.reviewdata.filter(function(row) {
-                    //     return row.App===d.data.App
-                    // })
-                    // // console.log(vis.displayReview)
-                    // let myBubbles = new PackedBubbles("bubble-chart", vis.displayReview);
+                    myBubbles.wrangleData(d.data.App);
 
 
                 })
-                .on('mouseout', function(event, d){
+                .on('mouseout', function (event, d) {
                     d3.select(this)
                         .attr('stroke-width', '0px')
 
@@ -254,7 +256,7 @@ class VoronoiTreemap {
         // draw legend
         let legendHeight = 13,
             interLegend = 4,
-            colorWidth = legendHeight*2,
+            colorWidth = legendHeight * 2,
             nodes = vis.displayData.children.reverse();
 
         console.log('nodes', nodes)
@@ -262,7 +264,7 @@ class VoronoiTreemap {
         vis.legendContainer = vis.drawingArea
             .append("g")
             .classed("legend", true)
-            .attr("transform", "translate("+[0, vis.height-20]+")");
+            .attr("transform", "translate(" + [0, vis.height - 20] + ")");
 
         vis.legends = vis.legendContainer
             .selectAll(".legend")
@@ -272,8 +274,8 @@ class VoronoiTreemap {
         vis.legend = vis.legends
             .append("g")
             .classed("legend", true)
-            .attr("transform", function(d,i){
-                return "translate("+[0, -i*(legendHeight+interLegend)]+")";
+            .attr("transform", function (d, i) {
+                return "translate(" + [0, -i * (legendHeight + interLegend)] + ")";
             })
 
         vis.legend
@@ -282,18 +284,22 @@ class VoronoiTreemap {
             .attr("y", -legendHeight)
             .attr("width", colorWidth)
             .attr("height", legendHeight)
-            .style("fill", function(d){ return d.color; });
+            .style("fill", function (d) {
+                return d.color;
+            });
 
         vis.legend
             .append("text")
             .classed("tiny", true)
-            .attr("transform", "translate("+[colorWidth+5, -2]+")")
-            .text(function(d){ return d.name; })
+            .attr("transform", "translate(" + [colorWidth + 5, -2] + ")")
+            .text(function (d) {
+                return d.name;
+            })
             .style("font-size", 12);
 
         vis.legendContainer
             .append("text")
-            .attr("transform", "translate("+[0, -nodes.length*(legendHeight+interLegend)-5]+")")
+            .attr("transform", "translate(" + [0, -nodes.length * (legendHeight + interLegend) - 5] + ")")
             .text("Content Rating");
 
 
