@@ -1,16 +1,19 @@
 /* * * * * * * * * * * * * *
 *         PieChart         *
 * * * * * * * * * * * * * */
-
+let countFree = 0;
+let countPaid = 0;
+let totalFree = 0;
+let totalPaid = 0;
 
 class PieChart {
 
-    // constructor method to initialize Timeline object
-    constructor(parentElement, textString, mainCount, totalCount) {
+    constructor(parentElement, textString, data) {
         this.parentElement = parentElement;
         this.textString = textString;
-        this.mainCount = mainCount;
-        this.totalCount = totalCount;
+        this.data = data;
+        countFree = countPaid = totalPaid = totalFree = 0;
+
 
         // call initVis method
         this.initVis()
@@ -75,6 +78,24 @@ class PieChart {
     wrangleData() {
         let vis = this;
 
+        vis.data.forEach(function (arrayItem) {
+            if (arrayItem.type == "Free" && arrayItem.installs >= 10000000) {
+                countFree += 1;
+            } else if (arrayItem.type == "Free" && arrayItem.installs < 10000000) {
+                totalFree += 1;
+            } else if (arrayItem.type == "Paid" && arrayItem.installs >= 10000000) {
+                countPaid += 1;
+            } else if (arrayItem.type == "Paid" && arrayItem.installs < 10000000) {
+                totalPaid += 1;
+            }
+        });
+        if (vis.textString == "Free Applications") {
+            vis.mainCount = countFree;
+            vis.totalCount = totalFree;
+        } else {
+            vis.mainCount = countPaid;
+            vis.totalCount = totalPaid;
+        }
         vis.displayData = [{value: vis.mainCount, color: '#EC6B56'}, {value: vis.totalCount, color: '#FFC154'}];
 
         vis.updateVis()
