@@ -67,6 +67,7 @@ class PieChartI {
             .attr('id', 'pieTooltip');
 
 
+
         // call next method in pipeline
         vis.wrangleData();
     }
@@ -168,7 +169,66 @@ class PieChartI {
                     .html(``);
             });
 
+
         vis.arcChart.exit().remove();
+
+        // let legendHeight = 13,
+        //     interLegend = 4,
+        //     colorWidth = legendHeight * 2;
+        // vis.nodes = [
+        //         {'name': vis.displayData2[0].string, 'color':vis.displayData2[0].color},
+        //         {'name': vis.displayData2[1].string, 'color':vis.displayData2[1].color},
+        //         {'name': vis.displayData2[2].string, 'color':vis.displayData2[2].color},
+        //         {'name': vis.displayData2[3].string, 'color':vis.displayData2[3].color},
+        //         {'name': vis.displayData2[4].string, 'color':vis.displayData2[4].color},
+        //     ];
+        //
+        //
+        // vis.legendContainer = vis.svg
+        //     .append("g")
+        //     .classed("legend", true)
+        //     .attr("transform", "translate(" + [0, vis.height - 20] + ")");
+        //
+        // vis.legends = vis.legendContainer
+        //     .selectAll(".legend")
+        //     .data(vis.nodes);
+        //
+        // vis.legend = vis.legends
+        //     .enter()
+        //     .append("g")
+        //     .classed("legend", true)
+        //     .merge(vis.legends)
+        //     .attr("transform", function (d, i) {
+        //         return "translate(" + [0, -i * (legendHeight + interLegend)] + ")";
+        //     })
+        //
+        // vis.legend
+        //     .append("rect")
+        //     .classed("legend-color", true)
+        //     .attr("y", -legendHeight)
+        //     .attr("width", colorWidth)
+        //     .attr("height", legendHeight)
+        //     .style("fill", function (d) {
+        //         return d.color;
+        //     });
+        //
+        //
+        // vis.legend
+        //     .append("text")
+        //     .classed("tiny", true)
+        //     .attr("transform", "translate(" + [colorWidth + 5, -2] + ")")
+        //     .text(function (d) {
+        //         return d.name;
+        //     })
+        //     .style("font-size", 12);
+        //
+        // vis.legendContainer
+        //     .append("text")
+        //     .attr("transform", "translate(" + [0, -vis.nodes.length * (legendHeight + interLegend) - 5] + ")")
+        //     .text(vis.config.title);
+        //
+        // vis.legends.exit().remove();
+
     }
 
 
