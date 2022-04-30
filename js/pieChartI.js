@@ -171,7 +171,7 @@ class PieChartI {
 
 
         vis.arcChart.exit().remove();
-
+        //
         // let legendHeight = 13,
         //     interLegend = 4,
         //     colorWidth = legendHeight * 2;
@@ -196,7 +196,7 @@ class PieChartI {
         // vis.legend = vis.legends
         //     .enter()
         //     .append("g")
-        //     .classed("legend", true)
+        //     .attr("class", "legend")
         //     .merge(vis.legends)
         //     .attr("transform", function (d, i) {
         //         return "translate(" + [0, -i * (legendHeight + interLegend)] + ")";
@@ -215,7 +215,7 @@ class PieChartI {
         //
         // vis.legend
         //     .append("text")
-        //     .classed("tiny", true)
+        //     .attr("class", "tiny")
         //     .attr("transform", "translate(" + [colorWidth + 5, -2] + ")")
         //     .text(function (d) {
         //         return d.name;
@@ -227,7 +227,7 @@ class PieChartI {
         //     .attr("transform", "translate(" + [0, -vis.nodes.length * (legendHeight + interLegend) - 5] + ")")
         //     .text(vis.config.title);
         //
-        // vis.legends.exit().remove();
+        // vis.legend.exit().remove();
 
     }
 

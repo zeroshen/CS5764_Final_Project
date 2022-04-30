@@ -236,8 +236,6 @@ class VoronoiTreemap {
                                  <h4> Genres: ${d.data.Genres}</h4>
                                 </div>`);
 
-                    myBubbles.wrangleData(d.data.App);
-
 
                 })
                 .on('mouseout', function (event, d) {
@@ -249,6 +247,9 @@ class VoronoiTreemap {
                         .style("left", 0)
                         .style("top", 0)
                         .html(``);
+                })
+                .on("click", function(event, d) {
+                    myBubbles.wrangleData(d.data.App);
                 })
 
         }

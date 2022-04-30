@@ -69,6 +69,55 @@ class PieChart {
         vis.tooltip = d3.select("body").append('div')
             .attr('class', "tooltip")
             .attr('id', 'pieTooltip');
+        let legendHeight = 13,
+            interLegend = 4,
+            colorWidth = legendHeight * 2,
+            nodes = [
+                {'name': 'Successful Application', 'color':'#EC6B56'},
+                {'name': 'Unsuccessful Application', 'color':'#FFC154'},
+            ];
+
+
+        vis.legendContainer = vis.svg
+            .append("g")
+            .classed("legend", true)
+            .attr("transform", "translate(" + [0, vis.height - 20] + ")");
+
+        vis.legends = vis.legendContainer
+            .selectAll(".legend")
+            .data(nodes)
+            .enter();
+
+        vis.legend = vis.legends
+            .append("g")
+            .classed("legend", true)
+            .attr("transform", function (d, i) {
+                return "translate(" + [0, -i * (legendHeight + interLegend)] + ")";
+            })
+
+        vis.legend
+            .append("rect")
+            .classed("legend-color", true)
+            .attr("y", -legendHeight)
+            .attr("width", colorWidth)
+            .attr("height", legendHeight)
+            .style("fill", function (d) {
+                return d.color;
+            });
+
+        vis.legend
+            .append("text")
+            .classed("tiny", true)
+            .attr("transform", "translate(" + [colorWidth + 5, -2] + ")")
+            .text(function (d) {
+                return d.name;
+            })
+            .style("font-size", 12);
+
+        vis.legendContainer
+            .append("text")
+            .attr("transform", "translate(" + [0, -nodes.length * (legendHeight + interLegend) - 5] + ")")
+            .text("Category");
 
         // call next method in pipeline
         this.wrangleData();
