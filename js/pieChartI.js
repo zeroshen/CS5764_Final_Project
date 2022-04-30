@@ -171,10 +171,24 @@ class PieChartI {
 
 
         vis.arcChart.exit().remove();
-        //
-        // let legendHeight = 13,
-        //     interLegend = 4,
-        //     colorWidth = legendHeight * 2;
+
+        let legendHeight = 13,
+            interLegend = 4,
+            colorWidth = legendHeight * 2;
+
+        vis.nodes = []
+        for (let i = 0; i < vis.displayData2.length; i++) {
+            vis.nodes.push({
+                name: vis.displayData2[i].string,
+                color: vis.displayData2[i].color
+            })
+        }
+        while (vis.nodes.length != 5){
+            vis.nodes.push({
+                name: "",
+                color: "#DEF2F1"
+            })
+        }
         // vis.nodes = [
         //         {'name': vis.displayData2[0].string, 'color':vis.displayData2[0].color},
         //         {'name': vis.displayData2[1].string, 'color':vis.displayData2[1].color},
@@ -182,52 +196,61 @@ class PieChartI {
         //         {'name': vis.displayData2[3].string, 'color':vis.displayData2[3].color},
         //         {'name': vis.displayData2[4].string, 'color':vis.displayData2[4].color},
         //     ];
-        //
-        //
-        // vis.legendContainer = vis.svg
-        //     .append("g")
-        //     .classed("legend", true)
-        //     .attr("transform", "translate(" + [0, vis.height - 20] + ")");
-        //
-        // vis.legends = vis.legendContainer
-        //     .selectAll(".legend")
-        //     .data(vis.nodes);
-        //
-        // vis.legend = vis.legends
-        //     .enter()
-        //     .append("g")
-        //     .attr("class", "legend")
-        //     .merge(vis.legends)
-        //     .attr("transform", function (d, i) {
-        //         return "translate(" + [0, -i * (legendHeight + interLegend)] + ")";
-        //     })
-        //
-        // vis.legend
-        //     .append("rect")
-        //     .classed("legend-color", true)
-        //     .attr("y", -legendHeight)
-        //     .attr("width", colorWidth)
-        //     .attr("height", legendHeight)
-        //     .style("fill", function (d) {
-        //         return d.color;
-        //     });
-        //
-        //
-        // vis.legend
-        //     .append("text")
-        //     .attr("class", "tiny")
-        //     .attr("transform", "translate(" + [colorWidth + 5, -2] + ")")
-        //     .text(function (d) {
-        //         return d.name;
-        //     })
-        //     .style("font-size", 12);
-        //
-        // vis.legendContainer
-        //     .append("text")
-        //     .attr("transform", "translate(" + [0, -vis.nodes.length * (legendHeight + interLegend) - 5] + ")")
-        //     .text(vis.config.title);
-        //
-        // vis.legend.exit().remove();
+
+
+        vis.legendContainer = vis.svg
+            .append("g")
+            .classed("legend", true)
+            .attr("transform", "translate(" + [0, vis.height - 20] + ")");
+
+        vis.legends = vis.legendContainer
+            .selectAll(".legend")
+            .data(vis.nodes);
+
+        vis.legend = vis.legends
+            .enter()
+            .append("g")
+            .attr("class", "legend")
+            .merge(vis.legends)
+            .attr("transform", function (d, i) {
+                return "translate(" + [0, -i * (legendHeight + interLegend)] + ")";
+            })
+
+        vis.legend
+            .append("rect")
+            .classed("legend-color", true)
+            .attr("y", -legendHeight)
+            .attr("width", colorWidth)
+            .attr("height", legendHeight)
+            .style("fill", function (d) {
+                return d.color;
+            });
+
+        vis.label = vis.svg.selectAll(".pie-label")
+            .data(vis.nodes);
+
+        vis.label
+            .enter()
+            .append('text')
+            .attr("class", "pie-label")
+            .merge(vis.label)
+            .attr("transform", function (d, i) {
+                return "translate(" + [colorWidth + 5, vis.height - 20 -i * (legendHeight + interLegend)] + ")";
+            })
+            .text(function (d) {
+                return d.name;
+            })
+            .style("font-size", 12);
+
+        vis.label.exit().remove();
+
+
+        vis.legendContainer
+            .append("text")
+            .attr("transform", "translate(" + [0, -vis.nodes.length * (legendHeight + interLegend) - 5] + ")")
+            .text(vis.config.title);
+
+        vis.legend.exit().remove();
 
     }
 
