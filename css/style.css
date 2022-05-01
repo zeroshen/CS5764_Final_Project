@@ -20,11 +20,17 @@
 }
 
 .row_3 {
-    height: 40vh;
+    height: 60vh;
     border-style: groove;
     background-color: #3AAFA9;
 }
 
+.row_4 {
+    /*height: 60vh;*/
+    border-style: groove;
+    background-color: #3AAFA9;
+    padding-top: 20px;
+}
 
 .page-title {
     color: #F2E9E4
@@ -33,6 +39,7 @@
 .bar {
     fill: #357EC7;
 }
+
 .header {
     position: fixed;
     top: 0;
@@ -40,6 +47,7 @@
     width: 100%;
     background-color: #f1f1f1;
 }
+
 .progress-container {
     width: 100%;
     height: 8px;
@@ -67,7 +75,7 @@
 }
 
 
-.area{
+.area {
     fill: #357EC7;
 }
 
@@ -92,15 +100,17 @@
     flex-wrap: wrap;
 }
 
-.tooltip h3{
+.tooltip h3 {
     text-align: left;
     font: 18px sans-serif;
     color: #dc3545;
 }
+
 .tooltip h4 {
     text-align: left;
     font: 14px sans-serif;
 }
+
 .text-context {
     padding-right: 15vh;
     padding-left: 15vh;
@@ -124,4 +134,19 @@
 .yAxisChart2 {
     font-weight: bold;
     font-size: 15px;
+}
+
+.column {
+
+    float: left;
+    width: 50%;
+    /*background: #2B7A78;*/
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
