@@ -24,199 +24,277 @@
             <h1 class="page-title">Analysis of Google Play Store Apps</h1>
         </div>
     </div>
-    <div class="row justify-content-center row_3">
+    <div class="row justify-content-center row_4">
         <div class="align-self-center text-context">
-            <p style="text-align:center; font-size:100%; font-weight:bold">"It's good to learn from your mistakes. It's better to learn from other people's mistakes."
-                </p>
-            <p style="text-align:right; font-size:100%; font-weight:bold">- Warren Buffett<br>
-                <br>
+            <p style="text-align:center; font-size:100%; font-weight:bold">"It's good to learn from your mistakes. It's
+                better to learn from other people's mistakes."
             </p>
-                <ul style="text-align:center; font-size:100%;list-style-position: inside">
-            <li>The play store applications data has
-                enormous potential to drive application-making businesses and companies to success.</li>
-            <li>The goal of this analysis is to provide insights to android application developers about the
-                trends in the android market and help them in creating more influential or successful applications based
-                on various factors like rating, reviews, number of installs, etc.</li>
-        </ul>
+            <p style="text-align:right; font-size:100%; font-weight:bold">- Warren Buffett
+            </p>
+            <ul style="font-size:100%">
+                <li>The play store applications data has
+                    enormous potential to drive application-making businesses and companies to success.
+                </li>
+                <li>The goal of this analysis is to provide insights to android application developers about the
+                    trends in the android market and help them in creating more influential or successful applications
+                    based
+                    on various factors like rating, reviews, number of installs, etc.
+                </li>
+            </ul>
             <p style="text-align:center; font-size:100%; font-weight:bold">
                 Actionable insights can be drawn for developers to work on and capture the android market!</p>
         </div>
     </div>
-    <div class="row justify-content-center row_2">
-        <h5 style="text-align:center; padding: 10px; border-style: solid">What are the top installed apps by category, genre, type and
-            content
-            rating?</h5>
-        <div class="col-10" id="vis-2-container">
-            <div class="col-8">
-                <div class="container">
-                    <p style="font-weight: bold">Category: &nbsp; &nbsp;</p>
-                    <select id='categorySelector' class="custom-select align-self-center"
-                            style="width: 30%" onchange="getCategoryValues()">
-                        <option value="Category" selected>Category</option>
-                        <option value="ContentRating">Content Rating</option>
-                        <option value="Type">Type</option>
-                        <option value="Genres">Genres</option>
-                    </select>
-                    <p style="font-weight: bold; padding-left: 0.5rem">Category Value: &nbsp; &nbsp;</p>
-                    <select id='categoryValueSelector' class="custom-select align-self-center"
-                            style="width: 40%" onchange="categoryChange()">
-                    </select>
+
+    <div class="row">
+        <div class="column">
+            <div class="row justify-content-center row_3">
+                <div class="align-self-center text-context">
+                    <ul style="font-size:100%">
+                        <li>The above visualization shows the most installed applications
+                            in each category.
+                        </li>
+                        <li>Users can explore the different categories like content rating and genres and find out
+                            which applications have been most installed in that category.
+                        </li>
+                        <li>Some of the most installed
+                            applications and their categories are Google News (News), Google play games (Family), Subway
+                            surfers (Games),
+                            Youtube (Video player), Drive (Productivity), Google (Tools), Maps (Travel), Google
+                            photos(Photography)
+                            Facebook, Instagram(Social).
+                        </li>
+                    </ul>
+                    <p style="text-align:center; font-size:100%; font-weight:bold">
+                        What makes these applications stand out from the rest?<br>
+                        Let's dive deeper into it!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row justify-content-center row_2">
+                <h5 style="text-align:center; padding: 10px; border-style: solid">What are the top installed apps by
+                    category, genre, type and
+                    content
+                    rating?</h5>
+                <div class="col-10" id="vis-2-container">
+                    <div class="col-8">
+                        <div class="container">
+                            <p style="font-weight: bold">Category: &nbsp; &nbsp;</p>
+                            <select id='categorySelector' class="custom-select align-self-center"
+                                    style="width: 30%" onchange="getCategoryValues()">
+                                <option value="Category" selected>Category</option>
+                                <option value="ContentRating">Content Rating</option>
+                                <option value="Type">Type</option>
+                                <option value="Genres">Genres</option>
+                            </select>
+                            <p style="font-weight: bold; padding-left: 0.5rem">Category Value: &nbsp; &nbsp;</p>
+                            <select id='categoryValueSelector' class="custom-select align-self-center"
+                                    style="width: 40%" onchange="categoryChange()">
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-8" id="vis_content-2"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="row justify-content-center row_3">
+                <div class="align-self-center text-context">
+                    <ul style="font-size:100%">
+                        <li>Above visualization gives an analysis of the free and paid
+                            applications on the playstore.
+                        </li>
+                        <li>This is done by measuring the number of successful and unsuccessful
+                            applications in each category (free/ paid).
+                        </li>
+                        <li>For measuring the success of an application, a threshold of
+                            10,000,000 downloads has been selected.
+                        </li>
+                        <li>Hovering over each color in the pie chart
+                            provides further information about the number of applications.
+                        </li>
+                        <li>A tooltip has been employed for the
+                            same.
+                        </li>
+                    </ul>
+                    <p style="text-align:center; font-size:100%; font-weight:bold">
+                        The first insight that this visualization provides is that there is a higher chance of success
+                        for free
+                        applications than there is for paid applications. </p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row justify-content-center row_2">
+                <div class="col-6" id="content-1">
+                </div>
+                <div class="col-6" id="vis_content-1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="row justify-content-center row_3">
+                <div class="align-self-center text-context">
+                    <ul style="font-size:100%">
+                        <li>A new visualization was incorporated to show what price range
+                            the most successful paid applications costed.
+                        </li>
+                        <li>Success was measured by the number of installs, which in
+                            our case was above 10,000,000.
+                        </li>
+                        <li>One application costed under 3.49$ while two others costed between 3.49$
+                            and 6.99$.
+                        </li>
+                    </ul>
+                    <p style="text-align:center; font-size:100%; font-weight:bold">
+                        These statistics indicate that customers are unwilling to pay higher than 6.99$ for any
+                        application.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row justify-content-center row_2">
+                <div class="col-6" id="vis_content-5">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="row justify-content-center row_3">
+                <div class="align-self-center text-context" id="text-3">
+                    <ul style="font-size:100%">
+                        <li>Above is an interactive visualization in which
+                            a pie chart has been connected with the area chart.
+                        </li>
+                        <li>The purpose of this visualization is to show the
+                            growth of applications in specific categories and having specific content ratings with time.
+                        </li>
+                        <li>The pie
+                            charts also show what portion of the market has been captured by specific application
+                            categories and
+                            content ratings.
+                        </li>
+                    </ul>
+                    <p style="text-align:center; font-size:100%; font-weight:bold">
+                        The area chart shows us that there is a huge spike in the number of applications
+                        towards the end of 2018. The ‘family’ genre and ‘everyone’ content rating has had the most share
+                        of the
+                        market at any given point telling us that this is the sweet spot developers should focus
+                        on. </p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row justify-content-center row_2" style="padding-top: 0.5rem">
+                <div class="col-md-3" id="content-3">
+                </div>
+                <div class="col-md-3" id="vis_content-3">
+                </div>
+                <div class="col-md-6" id="content-4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="row justify-content-center row_3">
+                <div class="align-self-center text-context">
+                    <ul style="font-size:100%">
+                        <li>The above visualization shows the distribution of rating values
+                            per category.
+                        </li>
+                        <li>This is a box plot visualization showing minimum, maximum, quartiles and median of rating
+                            values for each category rating.
+                        </li>
+                    </ul>
+                    <p style="text-align:center; font-size:100%; font-weight:bold">
+                        The 'Adults only' category has the highest median rating among all categories which may be
+                        attributed
+                        to the fact that most of the user population for the application store are children and the fact
+                        that more number
+                        of people are using applications that are rated 'Everyone'. This also explains it's higher
+                        interquartile range.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row justify-content-center row_2">
+                <div class="col-6" id="vis_content-6">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="row justify-content-center row_3">
+                <div class="align-self-center text-context" id="text-4">
+                    <ul style="font-size:100%">
+                        <li>The innovative visualization above shows the sentiment analysis
+                            of the reviews for the applications.
+                        </li>
+                        <li>The general design is that each bubble represents one review,
+                            the color represents whether the sentiment is positive, negative or neutral and
+                            the size of the bubble represents the polarity of the review.
+                        </li>
+                        <li>When we hover over the
+                            bubble, more details about the review appear.
+                        </li>
+                        <li>You can also drag and play with the bubbles.</li>
+                    </ul>
+                    <p style="text-align:center; font-size:100%; font-weight:bold">
+                        Applications that are downloaded a lot like 'Facebook' also have reviews that are a mixture of
+                        all sentiments making
+                        it harder to judge them. On the other hand, applications that are downloaded less like
+                        'Background Wallpapers HD'
+                        have fewer and clearer sentiments in reviews. The many negative reviews for 'Facebook' can also
+                        be attributed
+                        to the fact that many users have become increasingly unhappy with the addition of ads, fake
+                        news, etc to the
+                        application with time. This is what still keeps applications like 'Amazon' and 'Google' fairly
+                        positive in
+                        their reviews, ie. customers are still happy with the service provided even though the number of
+                        downloads for
+                        these applications are the same as 'Facebook'.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row justify-content-center row_2">
+
+                <div class="col-md-6" id="voronoi-chart">
+                </div>
+                <div class="col-md-6" id="bubble-chart">
                 </div>
 
+                <!--        <div class="col-md-6">-->
+                <!--&lt;!&ndash;            &lt;!&ndash; graph &ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;            <div class="row justify-content-center">&ndash;&gt;-->
+                <!--&lt;!&ndash;                <div class="align-self-center" id="bubble-chart" style="height: 100%; width: 100%"></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+                <!--        </div>-->
+
             </div>
-            <div class="col-8" id="vis_content-2"></div>
-
         </div>
     </div>
-    <div class="row justify-content-center row_3">
-        <div class="align-self-center text-context">
-            <ul style="text-align:center; font-size:100%;list-style-position: inside">
-                <li>The above visualization shows the most installed applications
-                    in each category.</li>
-                <li>Users can explore the different categories like content rating and genres and find out
-                    which applications have been most installed in that category.</li>
-                <li>Some of the most installed
-                    applications and their categories are Google News (News), Google play games (Family), Subway surfers (Games),
-                    Youtube (Video player), Drive (Productivity), Google (Tools), Maps (Travel), Google photos(Photography)
-                    Facebook, Instagram(Social).</li>
-            </ul>
-            <p style="text-align:center; font-size:100%; font-weight:bold">
-                What makes these applications stand out from the rest?<br>
-                Let's dive deeper into it!
-            </p>
-        </div>
-    </div>
-    <div class="row justify-content-center row_2">
-        <div class="col-6" id="content-1">
-        </div>
-        <div class="col-6" id="vis_content-1">
-        </div>
-    </div>
-    <div class="row justify-content-center row_3">
-        <div class="align-self-center text-context">
-            <ul style="text-align:center; font-size:100%;list-style-position: inside">
-                <li>Above visualization gives an analysis of the free and paid
-                    applications on the playstore.</li>
-                <li>This is done by measuring the number of successful and unsuccessful
-                    applications in each category (free/ paid).</li>
-                <li>For measuring the success of an application, a threshold of
-                    10,000,000 downloads has been selected.</li>
-                <li>Hovering over each color in the pie chart
-                    provides further information about the number of applications.</li>
-                <li>A tooltip has been employed for the
-                    same.</li>
-            </ul>
-            <p style="text-align:center; font-size:100%; font-weight:bold">
-                The first insight that this visualization provides is that there is a higher chance of success for free
-                applications than there is for paid applications. </p>
-        </div>
-    </div>
-    <div class="row justify-content-center row_2">
-        <div class="col-6" id="vis_content-5">
-        </div>
-    </div>
-    <div class="row justify-content-center row_3">
-        <div class="align-self-center text-context">
-            <ul style="text-align:center; font-size:100%;list-style-position: inside">
-                <li>A new visualization was incorporated to show what price range
-                    the most successful paid applications costed.</li>
-                <li>Success was measured by the number of installs, which in
-                    our case was above 10,000,000.</li>
-                <li>One application costed under 3.49$ while two others costed between 3.49$
-                    and 6.99$.</li>
-            </ul>
-            <p style="text-align:center; font-size:100%; font-weight:bold">
-                These statistics indicate that customers are unwilling to pay higher than 6.99$ for any application.
-            </p>
-        </div>
-    </div>
-    <div class="row justify-content-center row_2" style="padding-top: 0.5rem">
-        <div class="col-md-3" id="content-3">
-        </div>
-        <div class="col-md-3" id="vis_content-3">
-        </div>
-        <div class="col-md-6" id="content-4">
-        </div>
-    </div>
-
-    <div class="row justify-content-center row_3">
-        <div class="align-self-center text-context" id="text-3">
-            <ul style="text-align:center; font-size:100%;list-style-position: inside">
-                <li>Above is an interactive visualization in which
-                    a pie chart has been connected with the area chart.</li>
-                <li>The purpose of this visualization is to show the
-                    growth of applications in specific categories and having specific content ratings with time.</li>
-                <li>The pie
-                    charts also show what portion of the market has been captured by specific application categories and
-                    content ratings.</li>
-            </ul>
-            <p style="text-align:center; font-size:100%; font-weight:bold">
-                The area chart shows us that there is a huge spike in the number of applications
-                towards the end of 2018. The ‘family’ genre and ‘everyone’ content rating has had the most share of the
-                market at any given point telling us that this is the sweet spot developers should focus on. </p>
-        </div>
-    </div>
-    <div class="row justify-content-center row_2">
-        <div class="col-6" id="vis_content-6">
-        </div>
-    </div>
-    <div class="row justify-content-center row_3">
-        <div class="align-self-center text-context">
-            <ul style="text-align:center; font-size:100%;list-style-position: inside">
-                <li>The above visualization shows the distribution of rating values
-                    per category.</li>
-                <li>This is a box plot visualization showing minimum, maximum, quartiles and median of rating
-                    values for each category rating.</li>
-            </ul>
-            <p style="text-align:center; font-size:100%; font-weight:bold">
-                The 'Adults only' category has the highest median rating among all categories which may be attributed
-                to the fact that most of the user population for the application store are children and the fact that more number
-                of people are using applications that are rated 'Everyone'. This also explains it's higher interquartile range.
-            </p>
-        </div>
-    </div>
-
-    <div class="row justify-content-center row_2">
-
-        <div class="col-md-6" id="voronoi-chart">
-        </div>
-        <div class="col-md-6" id="bubble-chart">
-        </div>
-
-        <!--        <div class="col-md-6">-->
-        <!--&lt;!&ndash;            &lt;!&ndash; graph &ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;            <div class="row justify-content-center">&ndash;&gt;-->
-        <!--&lt;!&ndash;                <div class="align-self-center" id="bubble-chart" style="height: 100%; width: 100%"></div>&ndash;&gt;-->
-        <!--&lt;!&ndash;            </div>&ndash;&gt;-->
-
-        <!--        </div>-->
-
-    </div>
-    <div class="row justify-content-center row_3">
-        <div class="align-self-center text-context" id="text-4">
-            <ul style="text-align:center; font-size:100%;list-style-position: inside">
-                <li>The innovative visualization above shows the sentiment analysis
-                    of the reviews for the applications.</li>
-                <li>The general design is that each bubble represents one review,
-                    the color represents whether the sentiment is positive, negative or neutral and
-                    the size of the bubble represents the polarity of the review.</li>
-                <li>When we hover over the
-                    bubble, more details about the review appear.</li>
-                <li>You can also drag and play with the bubbles.</li>
-            </ul>
-            <p style="text-align:center; font-size:100%; font-weight:bold">
-                Applications that are downloaded a lot like 'Facebook' also have reviews that are a mixture of all sentiments making
-                it harder to judge them. On the other hand, applications that are downloaded less like 'Background Wallpapers HD'
-                have fewer and clearer sentiments in reviews. The many negative reviews for 'Facebook' can also be attributed
-                to the fact that many users have become increasingly unhappy with the addition of ads, fake news, etc to the
-                application with time. This is what still keeps applications like 'Amazon' and 'Google' fairly positive in
-                their reviews, ie. customers are still happy with the service provided even though the number of downloads for
-                these applications are the same as 'Facebook'.
-            </p>
-        </div>
-    </div>
-
-    <div class="row justify-content-center row_3">
+    <div class="row justify-content-center row_4">
         <div class="align-self-center" style="width: 75%;">
             <p style="text-align:center; font-weight: bold; font-size:100%;">
                 In conclusion, this can help android application developers in building
