@@ -65,8 +65,8 @@ class VoronoiTreemap {
             .attr("id", "title")
             .attr("transform", "translate(" + [vis.width / 2, -60] + ")")
             .attr("text-anchor", "middle")
-            .text("Check out user reviews and their sentiments")
-            .attr("font-size", 22)
+            .text("Hover and click anywhere within the circle below to check out user reviews and their sentiments")
+            .attr("font-size", 15)
 
 
 
