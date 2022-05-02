@@ -23,7 +23,7 @@ class PieChart {
         let vis = this;
 
         // margin conventions
-        vis.margin = {top: 10, right: 0, bottom: 10, left: 0};
+        vis.margin = {top: 50, right: 0, bottom: 50, left: 0};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
@@ -155,7 +155,6 @@ class PieChart {
     updateVis() {
         let vis = this;
 
-        // TODO
         // Bind data
         vis.arcs = vis.pieChartGroup.selectAll(".arc")
             .data(vis.pie(vis.displayData));
