@@ -24,7 +24,7 @@ class BarChart {
     initVis() {
         let vis = this;
 
-        vis.margin = {top: 30, right: 50, bottom: 10, left: 200};
+        vis.margin = {top: 30, right: 50, bottom: 30, left: 200};
 
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = 300 - vis.margin.top - vis.margin.bottom;
