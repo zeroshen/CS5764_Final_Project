@@ -45,3 +45,10 @@ function getCategoryValues() {
     selectedCategoryValue = document.getElementById('categoryValueSelector').value;
     barChart.wrangleData();
 }
+
+
+function reviewcategoryChange() {
+    selectedreviewCategoryValue = document.getElementById('reviewcategorySelector').value;
+    myWords_positive.wrangleData();
+    myWords_negative.wrangleData();
+}

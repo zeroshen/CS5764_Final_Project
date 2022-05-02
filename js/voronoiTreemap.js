@@ -33,10 +33,10 @@ class VoronoiTreemap {
 
         // initialize voronoi treemap
         vis.voronoiTreemap = d3.voronoiTreemap();
-        vis.treemapRadius = 100
+        vis.treemapRadius = 130
         vis.treemapCenter = [vis.width / 2, vis.height / 2 + 5]
         vis.selectedCategory = 'Installs'     //'Reviews'   //'Rating'  //'Installs'
-        vis.slice = 50
+        // vis.slice = 50
 
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -65,7 +65,10 @@ class VoronoiTreemap {
             .attr("id", "title")
             .attr("transform", "translate(" + [vis.width / 2, -60] + ")")
             .attr("text-anchor", "middle")
-            .text("Top " + vis.slice + " installed applications for each 'Content Rating' category")
+            .text("Check out user reviews and their sentiments")
+            .attr("font-size", 22)
+
+
 
 
         // drawLegends(rootData);
@@ -112,7 +115,8 @@ class VoronoiTreemap {
                         return b[vis.selectedCategory] - a[vis.selectedCategory]
                     })
 
-                    let selected_array = filtered_arry.slice(0, vis.slice)
+                    let selected_array = filtered_arry
+                    // let selected_array = filtered_arry.slice(0, vis.slice)
                     // let selected_array = filtered_arry.slice(0, vis.slice).concat(
                     //     filtered_arry.slice(filtered_arry.length-vis.slice, filtered_arry.length))
 
@@ -134,7 +138,7 @@ class VoronoiTreemap {
 
         vis.displayData = buildHierarchy(vis.data)
 
-        console.log('Displaydata:', vis.displayData)
+        // console.log('Displaydata:', vis.displayData)
 
 
         // set polygon size
@@ -188,7 +192,7 @@ class VoronoiTreemap {
             .sum(function (d) {
                 return d[vis.selectedCategory];
             })  // also check out Rating and Reviews
-        console.log('hierarchy:', vis.hierarchy)
+        // console.log('hierarchy:', vis.hierarchy)
 
         vis.voronoiTreemap
             .clip(vis.circlingPolygon)
@@ -260,12 +264,12 @@ class VoronoiTreemap {
             colorWidth = legendHeight * 2,
             nodes = vis.displayData.children.reverse();
 
-        console.log('nodes', nodes)
+        // console.log('nodes', nodes)
 
         vis.legendContainer = vis.drawingArea
             .append("g")
             .classed("legend", true)
-            .attr("transform", "translate(" + [0, vis.height - 20] + ")");
+            .attr("transform", "translate(" + [0, vis.height/4] + ")");
 
         vis.legends = vis.legendContainer
             .selectAll(".legend")
@@ -301,7 +305,7 @@ class VoronoiTreemap {
         vis.legendContainer
             .append("text")
             .attr("transform", "translate(" + [0, -nodes.length * (legendHeight + interLegend) - 5] + ")")
-            .text("Content Rating");
+            .text("Content Rating \n(Shape size: App installs)");
 
 
     }

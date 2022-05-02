@@ -10,6 +10,7 @@ let numApps1 = 0;
 let numApps2 = 0;
 let myVoronoi;
 let myBubbles;
+let wordCounts, myWords_positive, myWords_negative;
 let originalReviewData = [];
 
 let configs = [
@@ -146,7 +147,7 @@ d3.csv("data/googleplaystore_converted.csv", (row) => {
 // load review data
 let promises = [
     // app contentrating
-    d3.csv("data/googleplaystore_converted_uniqueReviews.csv", (data) => {
+    d3.csv("data/googleplaystore_converted_withReviews.csv", (data) => {
 
         data.Rating = +data.Rating;
         data.Installs = +data.Installs;
@@ -161,6 +162,12 @@ let promises = [
         data.Sentiment_Polarity = +data.Sentiment_Polarity;
         data.Sentiment_absPolarity = Math.abs(+data.Sentiment_Polarity);
         data.Sentiment_Subjectivity = +data.Sentiment_Subjectivity;
+        return data;
+    }),
+
+    d3.csv("data/word_counts_converted.csv", (data) => {
+        // convert strings to numbers
+        data.frequency = +data.frequency;
         return data;
     })
 ];
@@ -178,9 +185,11 @@ Promise.all(promises)
 function reviewVis(data) {
     let rateData = data[0]
     let reviewData = data[1]
+    wordCounts = data[2]
 
     console.log('rate data:', rateData)
     console.log('review data:', reviewData)
+    console.log('word counts:', wordCounts)
 
     originalReviewData = reviewData;
 
@@ -189,5 +198,9 @@ function reviewVis(data) {
 
     // // create bubble chart
     myBubbles = new PackedBubbles("bubble-chart", reviewData);
+
+    // word cloud
+    myWords_positive = new WordCloud("wordcloud-pos", wordCounts, 'Positive');
+    myWords_negative = new WordCloud("wordcloud-neg", wordCounts, 'Negative');
 
 }

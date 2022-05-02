@@ -40,7 +40,7 @@ class PackedBubbles {
             .domain(['Positive', 'Neutral', 'Negative']);
 
         vis.size = d3.scaleLinear()
-            .range([4, 16])
+            .range([4, 20])
             .domain([0, 1])  // Sentiment_absPolarity
 
 
@@ -63,7 +63,7 @@ class PackedBubbles {
         vis.legendContainer = vis.svg
             .append("g")
             .classed("legend", true)
-            .attr("transform", "translate(" + [0, vis.height - 20] + ")");
+            .attr("transform", "translate(" + [0, vis.height/2] + ")");
 
         vis.legends = vis.legendContainer
             .selectAll(".legend")
@@ -99,6 +99,11 @@ class PackedBubbles {
         vis.legendContainer
             .append("text")
             .attr("transform", "translate(" + [0, -nodes.length * (legendHeight + interLegend) - 5] + ")")
+            .text("(Circle size: Sentiment polarity)");
+
+        vis.legendContainer
+            .append("text")
+            .attr("transform", "translate(" + [0, -nodes.length * (legendHeight + interLegend) - 5 - 20] + ")")
             .text("Review sentiment");
 
 
@@ -125,7 +130,7 @@ class PackedBubbles {
             vis.displayData = [];
         }
         // console.log('originalreview:', originalReviewData)
-        console.log('AppName:', vis.AppName, '; displayData:', vis.displayData)
+        // console.log('AppName:', vis.AppName, '; displayData:', vis.displayData)
 
         // Update the visualization
         vis.updateVis();
@@ -155,15 +160,15 @@ class PackedBubbles {
                 }
 
             })
-            .style("font-size", 20)
+            .style("font-size", 32)
 
 
         // Features of the forces applied to the nodes:
         vis.simulation = d3.forceSimulation(vis.displayData)
             .force("center", d3.forceCenter().x(vis.width / 2).y(vis.height / 2)) // Attraction to the center of the svg area
-            .force("charge", d3.forceManyBody().strength(0)) // Nodes are attracted one each other of value is > 0
+            .force("charge", d3.forceManyBody().strength(0.1)) // Nodes are attracted one each other of value is > 0
             .force("collide", d3.forceCollide().strength(.2).radius(function (d) {
-                return (vis.size(Math.abs(d.Sentiment_Polarity)) + 3)
+                return (vis.size(Math.abs(d.Sentiment_Polarity)) + 6)
             }).iterations(1)) // Force that avoids circle overlapping
             .on("tick", ticked)
 
