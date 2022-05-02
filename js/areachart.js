@@ -25,7 +25,7 @@ class AreaChart {
     initVis() {
         let vis = this;
 
-        vis.margin = {top: 20, right: 30, bottom: 40, left: 40};
+        vis.margin = {top: 60, right: 30, bottom: 40, left: 60};
 
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
@@ -40,6 +40,9 @@ class AreaChart {
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
 
+        vis.svg.append("text")
+            .attr("y", -20)
+            .text("Counts of Application with Time");
         // Scales and axes
         vis.x = d3.scaleTime()
             .range([0, vis.width]);
@@ -85,6 +88,13 @@ class AreaChart {
             .append("rect")
             .attr("width", vis.width)
             .attr("height", vis.height);
+
+        vis.svg.append("text")      // text label for the y axis
+            .attr("x", -60)
+            .attr("y", 40)
+            .attr("transform", "translate(-80) rotate(-90)")
+            .style("text-anchor", "middle")
+            .text("Counts");
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
