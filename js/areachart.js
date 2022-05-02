@@ -42,7 +42,7 @@ class AreaChart {
 
         vis.svg.append("text")
             .attr("y", -20)
-            .text("Counts of Application with Time");
+            .text("Counts of All Applications with Last Undated Time");
         // Scales and axes
         vis.x = d3.scaleTime()
             .range([0, vis.width]);

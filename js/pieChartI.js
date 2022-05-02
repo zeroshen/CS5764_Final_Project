@@ -36,7 +36,7 @@ class PieChartI {
         vis.svg.append('g')
             .attr('class', 'title pie-title')
             .append('text')
-            .text(vis.config.title)
+            .text("Distribution of All Applications by " + vis.config.title)
             .attr('transform', `translate(${vis.width / 2}, 20)`)
             .attr('text-anchor', 'middle');
 
