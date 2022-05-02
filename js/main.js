@@ -6,8 +6,6 @@ let mainData = [];
 let areachart;
 let piecharts = [];
 let boxPlot;
-let numApps1 = 0;
-let numApps2 = 0;
 let myVoronoi;
 let myBubbles;
 let wordCounts, myWords_positive, myWords_negative;
@@ -101,35 +99,6 @@ function brushed() {
 }
 
 
-d3.csv("data/googleplaystore_converted.csv", (row) => {
-
-    if (row.Price > 0 && row.Price <= 3.49 && row.Installs >= 10000000) {
-        numApps1 += 1;
-        return {
-            installs: +row.Installs,
-            price: +row.Price
-        };
-    } else if (row.Price > 3.49 && row.Price <= 6.99 && row.Installs >= 10000000) {
-        numApps2 += 1;
-        return {
-            installs: +row.Installs,
-            price: +row.Price
-        };
-    }
-}).then(csv => {
-
-    let priceQ = [];
-
-    csv.forEach(function (d) {
-        // console.log(d.price);
-        priceQ.push(d.price);
-    })
-
-    let data = [{numApps: numApps1, price: "0$ < X <= 3.49$"}, {numApps: numApps2, price: "3.49$ < X <= 6.99$"}]
-
-    myBarChart = new BarChart2('vis_content-5', data);
-
-});
 
 
 // box plot visualization
