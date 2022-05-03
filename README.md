@@ -12,7 +12,7 @@
 - ```css/```:
   - ```style.css```: Main CSS file for the project used to format the contents of our web page
 - ```data/```:
-  - ```datacleanup.ipynb```: Notebook containing the data cleaning process.
+  - ```datacleanup.ipynb```: Notebook containing the data cleaning process
   - ```googleplaystore.csv```: Original dataset
   - ```googleplaystore_converted.csv```: Cleaned dataset
   - 
