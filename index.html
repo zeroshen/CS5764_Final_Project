@@ -219,14 +219,17 @@
                     of the reviews for the applications in the form of a word cloud.
                 </li>
                 <li>It analyzes the most common words in positive and negative reviews among various
-                    application categories
+                    application categories (use 5 categories for illustration)
                 </li>
                 <li>Go ahead, take a look!
                 </li>
             </ul>
-            <p style="text-align:center; font-size:100%; font-weight:bold">We observe that 'ads' are something because of which most people are giving negative reviews to
-                applications, while 'news' is a common words in most positive reviews across categories showing us that
-                this is one of the reasons people like applications in that category.
+            <p style="text-align:center; font-size:100%; font-weight:bold">We observe different and common features users like or dislike among different categories. E.G., dissatisfaction related features for each following category:
+            <li> GAME: 'money', 'ads', 'time', etc.</li>
+            <li> COMMUNICATION: 'message', 'update', 'ads', 'slow', etc.</li>
+            <li> TOOLS: 'phone', 'update', 'ads', 'useless', etc.</li>
+            <li> SOCIAL: 'update', 'time', 'facebook', 'posts', etc.</li>
+            <li> NEWS AND MAGAZINES: 'fake', 'ads', 'time', 'hate', etc.</li>
             </p>
         </div>
     </div>
@@ -237,11 +240,11 @@
                 <h4 style="font-weight: bold; padding-left: 1rem; padding-right: 1rem; padding-top: 1rem; padding-bottom: 1rem; color:#F2E9E4">Choose a Category of Interest! </h4>
                 <select id='reviewcategorySelector' class="custom-select align-self-center"
                         style="width: 40%" onchange="reviewcategoryChange()">
-                    <option value="GAME" selected>GAME</option>
-                    <option value="COMMUNICATION" selected>COMMUNICATION</option>
-                    <option value="TOOLS" selected>TOOLS</option>
-                    <option value="SOCIAL" selected>SOCIAL</option>
-                    <option value="NEWS_AND_MAGAZINES" selected>NEWS_AND_MAGAZINES</option>
+                    <option value="GAME">GAME</option>
+                    <option value="COMMUNICATION">COMMUNICATION</option>
+                    <option value="TOOLS">TOOLS</option>
+                    <option value="SOCIAL">SOCIAL</option>
+                    <option value="NEWS_AND_MAGAZINES">NEWS_AND_MAGAZINES</option>
                 </select>
             </div>
         </div>

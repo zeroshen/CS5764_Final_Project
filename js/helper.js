@@ -47,8 +47,4 @@ function getCategoryValues() {
 }
 
 
-function reviewcategoryChange() {
-    selectedreviewCategoryValue = document.getElementById('reviewcategorySelector').value;
-    myWords_positive.wrangleData();
-    myWords_negative.wrangleData();
-}
+

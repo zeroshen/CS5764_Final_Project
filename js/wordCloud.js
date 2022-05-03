@@ -10,7 +10,7 @@ class WordCloud {
         this.data = wordCounts;
         this.Sentiment = sentiment;
         this.displayData = [];
-        this.Category = 'GAME';
+        this.Category = null;
 
         this.initVis();
     }
@@ -38,7 +38,7 @@ class WordCloud {
 
         // Scales and axes
         vis.fontScale = d3.scaleLinear()
-            .range([10, 80])
+            .range([24, 80])
             .clamp(true);
 
         // (Filter, aggregate, modify data)
@@ -53,9 +53,12 @@ class WordCloud {
     wrangleData() {
         let vis = this;
 
+        vis.svg.selectAll('.worldcloud').remove();
+
         // Get the currently selected option in D3
         vis.Category = d3.select("#reviewcategorySelector").property("value");
 
+        console.log('category:', vis.Category)
 
         if (vis.Category != null && vis.Category.length !== 0) {
             vis.displayData = vis.data.filter(function (row) {
@@ -113,43 +116,66 @@ class WordCloud {
         vis.layout.start();
 
 
-        //Draw the word cloud
-        function draw(words) {
-            vis.cloud = vis.svg
-                .attr("transform", "translate(" + vis.layout.size()[0] / 2 + "," + vis.layout.size()[1] + ")")
-                .selectAll("g text")
-                .data(words)
+        // //Draw the word cloud
+        // function draw(words) {
+        //     vis.cloud = vis.svg
+        //         .attr("transform", "translate(" + vis.layout.size()[0] / 2 + "," + vis.layout.size()[1]*2/3 + ")")
+        //         .selectAll("g text")
+        //         .data(words)
+        //
+        //     //Entering words
+        //     vis.cloud.enter()
+        //         .append("text")
+        //         .attr("class", "worldcloud")
+        //         .style("font-family", "Impact")
+        //         // .style("fill", function() { return "hsl(" + Math.random() * 360 + ",100%,50%)"; })
+        //         .style("fill", function() {
+        //             if (vis.Sentiment === "Positive") {
+        //                 return "#31B346";
+        //         } else {
+        //                return "#FF3933";
+        //             }
+        //         })
+        //         .attr("text-anchor", "middle")
+        //         .attr('font-size', function(d) {return d.size; })
+        //         .text(function(d) { return d.text; });
+        //
+        //     //Entering and existing words
+        //     vis.cloud
+        //         .style("font-size", function(d) { return d.size; })
+        //         .attr("transform", function(d) {
+        //             return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+        //         });
+        //
+        //     //Exiting words
+        //     vis.cloud.exit().remove();
+        // }
 
-            //Entering words
-            vis.cloud.enter()
+
+        function draw(words) {
+            vis.svg
+                .append("g")
+                .attr("transform", "translate(" + vis.layout.size()[0] / 2 + "," + vis.layout.size()[1] *2/3+ ")")
+                .selectAll("text")
+                .data(vis.displayData)
+                .enter()
                 .append("text")
                 .attr("class", "worldcloud")
-                .style("font-family", "Impact")
-                // .style("fill", function() { return "hsl(" + Math.random() * 360 + ",100%,50%)"; })
+                .style("font-size", function(d) { return d.size; })
                 .style("fill", function() {
                     if (vis.Sentiment === "Positive") {
                         return "#31B346";
-                } else {
-                       return "#FF3933";
+                    } else {
+                        return "#FF3933";
                     }
                 })
                 .attr("text-anchor", "middle")
-                .attr('font-size', function(d) {return d.size; })
-                .text(function(d) { return d.text; });
-
-            //Entering and existing words
-            vis.cloud
-                .style("font-size", function(d) { return d.size; })
+                .style("font-family", "Impact")
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                });
-
-            //Exiting words
-            vis.cloud.exit().remove();
+                })
+                .text(function(d) { return d.text; });
         }
-
-
-
 
 
 

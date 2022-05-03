@@ -134,7 +134,7 @@ let promises = [
         return data;
     }),
 
-    d3.csv("data/word_counts_converted.csv", (data) => {
+    d3.csv("data/word_counts_converted_v2.csv", (data) => {
         // convert strings to numbers
         data.frequency = +data.frequency;
         return data;
@@ -156,9 +156,9 @@ function reviewVis(data) {
     let reviewData = data[1]
     wordCounts = data[2]
 
-    console.log('rate data:', rateData)
-    console.log('review data:', reviewData)
-    console.log('word counts:', wordCounts)
+    // console.log('rate data:', rateData)
+    // console.log('review data:', reviewData)
+    // console.log('word counts:', wordCounts)
 
     originalReviewData = reviewData;
 
@@ -172,4 +172,10 @@ function reviewVis(data) {
     myWords_positive = new WordCloud("wordcloud-pos", wordCounts, 'Positive');
     myWords_negative = new WordCloud("wordcloud-neg", wordCounts, 'Negative');
 
+}
+
+
+function reviewcategoryChange() {
+    myWords_positive.wrangleData();
+    myWords_negative.wrangleData();
 }
