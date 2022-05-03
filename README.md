@@ -10,9 +10,10 @@
 ## Project Structure:
 
 - ```css/```:
-  - ```style.css```:
+  - ```style.css```: Main css file for the project
 - ```data/```:
-  - ```googleplaystore.csv```:
+  - ```datacleanup.ipynb```: The method to clean the data
+  - ```googleplaystore.csv```: Original dataset 1
   - ```googleplaystore_converted.csv```:
 - ```js/```:
   - ```areachart.js```:
