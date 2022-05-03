@@ -14,17 +14,18 @@
 - ```data/```:
   - ```datacleanup.ipynb```: The method to clean the data
   - ```googleplaystore.csv```: Original dataset 1
-  - ```googleplaystore_converted.csv```:
+  - ```googleplaystore_converted.csv```: Cleaned dataset 1
+  - 
 - ```js/```:
-  - ```areachart.js```:
-  - ```barChart.js```:
+  - ```areachart.js```: Codes for area chart visualization**(Interaction)**
+  - ```barChart.js```: 
   - ```barChart2.js```:
   - ```boxPlot.js```:
   - ```helper.js```:
-  - ```main.js```:
+  - ```main.js```: Main JavaScript file for loading data and all visualizations
   - ```packedBubbles.js```:
-  - ```pieChart.js```:
-  - ```pieChartI.js```:
+  - ```pieChart.js```: Codes for pie chart visualization 1
+  - ```pieChartI.js```: Codes for pie chart visualization 2 **(Interaction)**
   - ```voronoiTreemap.js```:
   - ```wordCloud.js```:
-- ```index.html```:
+- ```index.html```: Main html file for our website
