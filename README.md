@@ -1,4 +1,4 @@
-# CS5764_Final_Project
+# Analysis of Google Play Store Applications
 
 **Information Visualization (CS5764) Final Project <br> By 'Core Four'**
 
