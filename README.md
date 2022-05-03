@@ -18,8 +18,7 @@
   - 
 - ```js/```:
   - ```areachart.js```: Codes for area chart visualization **(Interaction)**
-  - ```barChart.js```: 
-  - ```barChart2.js```:
+  - ```barChart.js```:
   - ```boxPlot.js```:
   - ```helper.js```:
   - ```main.js```: Main JavaScript file for loading data and all visualizations
