@@ -1,6 +1,6 @@
 # CS5764_Final_Project
 
-**Information Visualization (CS5764) Final Project <br> by team 'Core Four'**
+**Information Visualization (CS5764) Final Project <br> By 'Core Four'**
 
 **Team Members:** Zhen Shen, Meng Qi, Mayur Dhepe, Ashish Bhat
 
