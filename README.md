@@ -17,7 +17,7 @@
   - ```googleplaystore_converted.csv```: Cleaned dataset 1
   - 
 - ```js/```:
-  - ```areachart.js```: Codes for area chart visualization**(Interaction)**
+  - ```areachart.js```: Codes for area chart visualization **(Interaction)**
   - ```barChart.js```: 
   - ```barChart2.js```:
   - ```boxPlot.js```:
