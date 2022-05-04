@@ -119,8 +119,7 @@ class BoxPlot {
     updateVis() {
         let vis = this;
 
-        console.log(vis.displayData)
-        vis.x.domain(vis.data.map(d => d.ContentRating));
+        vis.x.domain(vis.data.map(d => d.ContentRating).filter(d => d !== "Unrated"));
 
         vis.y.domain([0, d3.max(vis.data, function (d) {
             return d.Rating;
@@ -143,16 +142,24 @@ class BoxPlot {
             .enter()
             .append("line")
             .attr("x1", function (d) {
-                return (vis.x(d[0]))
+                if (d[0] !== "Unrated") {
+                    return (vis.x(d[0]))
+                }
             })
             .attr("x2", function (d) {
-                return (vis.x(d[0]))
+                if (d[0] !== "Unrated") {
+                    return (vis.x(d[0]))
+                }
             })
             .attr("y1", function (d) {
-                return (vis.y(d[1].min))
+                if (d[0] !== "Unrated") {
+                    return (vis.y(d[1].min))
+                }
             })
             .attr("y2", function (d) {
-                return (vis.y(d[1].max))
+                if (d[0] !== "Unrated") {
+                    return (vis.y(d[1].max))
+                }
             })
             .attr("stroke", "black")
             .style("width", 40);
@@ -167,13 +174,19 @@ class BoxPlot {
             .enter()
             .append("rect")
             .attr("x", function (d) {
-                return (vis.x(d[0]) - vis.boxWidth / 2)
+                if (d[0] !== "Unrated") {
+                    return (vis.x(d[0]) - vis.boxWidth / 2)
+                }
             })
             .attr("y", function (d) {
-                return (vis.y(d[1].q3))
+                if (d[0] !== "Unrated") {
+                    return (vis.y(d[1].q3))
+                }
             })
             .attr("height", function (d) {
-                return (vis.y(d[1].q1) - vis.y(d[1].q3))
+                if (d[0] !== "Unrated") {
+                    return (vis.y(d[1].q1) - vis.y(d[1].q3))
+                }
             })
             .attr("width", vis.boxWidth)
             .attr("stroke", "black")
@@ -187,16 +200,24 @@ class BoxPlot {
             .enter()
             .append("line")
             .attr("x1", function (d) {
-                return (vis.x(d[0]) - vis.boxWidth / 2)
+                if (d[0] !== "Unrated") {
+                    return (vis.x(d[0]) - vis.boxWidth / 2)
+                }
             })
             .attr("x2", function (d) {
-                return (vis.x(d[0]) + vis.boxWidth / 2)
+                if (d[0] !== "Unrated") {
+                    return (vis.x(d[0]) + vis.boxWidth / 2)
+                }
             })
             .attr("y1", function (d) {
-                return (vis.y(d[1].median))
+                if (d[0] !== "Unrated") {
+                    return (vis.y(d[1].median))
+                }
             })
             .attr("y2", function (d) {
-                return (vis.y(d[1].median))
+                if (d[0] !== "Unrated") {
+                    return (vis.y(d[1].median))
+                }
             })
             .attr("stroke", "black")
             .style("width", 80);

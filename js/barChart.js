@@ -153,7 +153,7 @@ class BarChart {
             .duration(200)
             .style("opacity", 1)
             .attr("stroke", "black")
-            .text((d) => d['Installs'] / 1000 + 'K');
+            .text((d) => d['Installs'] / 1000 + 'K+');
 
         vis.labs.exit()
             .remove();
