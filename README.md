@@ -24,9 +24,9 @@ Provide insights to android application developers about the trends in the andro
   - ```boxPlot.js```: Code for the box plot visualization
   - ```helper.js```: Helper code for the voronoi treemap visualization
   - ```main.js```: Main javaScript file for loading the data and initializing all visualizations
-  - ```packedBubbles.js```: Code for the packed bubbles visualization **(Interactive)**
-  - ```pieChart.js```: Code for the first pie chart visualization **(Interactive)**
+  - ```packedBubbles.js```: Code for the packed bubbles visualization **(Interactive, innovative)**
+  - ```pieChart.js```: Code for the first pie chart visualization 
   - ```pieChartI.js```: Code for the second pie chart visualization **(Interactive)**
-  - ```voronoiTreemap.js```: Code for the voronoi treemap visualization **(Interactive)**
-  - ```wordCloud.js```: Code for the word cloud visualization **(Interactive)**
+  - ```voronoiTreemap.js```: Code for the voronoi treemap visualization **(Interactive, innovative)**
+  - ```wordCloud.js```: Code for the word cloud visualization **(Interactive, innovative)**
 - ```index.html```: Main HTML file for our web page
