@@ -206,3 +206,40 @@
     border-style: double;
     border-color: white;
 }
+
+
+/* button */
+a.popup {
+    outline: none;
+    background: #fffAF0;
+    font: 18px sans-serif;
+}
+
+a.popup strong {
+    line-height: 30px;
+}
+
+/*a.popup:hover {*/
+/*    text-decoration: none;*/
+/*}*/
+
+a.popup span {
+    z-index: 10;
+    display: none;
+    padding: 14px 20px;
+    margin-top: 20px;
+    /*margin-left: 28px;*/
+    width: 40%;
+    line-height: 16px;
+    font: 18px sans-serif;
+    text-align: left;
+}
+
+
+a.popup:hover span {
+    display: inline;
+    position: absolute;
+    color: #111;
+    border: 1px solid #DCA;
+    background: #fffAF0;
+}
