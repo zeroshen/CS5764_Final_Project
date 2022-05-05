@@ -196,7 +196,7 @@
     }
 }
 
-a:link, a:visited {
+#dataset:link, #dataset:visited {
     background-color: #2B7A78;
     color: white;
     padding: 14px 25px;
