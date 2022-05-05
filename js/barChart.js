@@ -73,11 +73,13 @@ class BarChart {
         // Example: selected category : 'Category', value: 'ART_AND_DESIGN'
 
         if (!selectedCategory || selectedCategory.length === 0) {
-            selectedCategory = "Category";
-            selectedCategoryValue = "ART_AND_DESIGN";
+            selectedCategory = "All";
         }
 
         switch (selectedCategory) {
+            case 'All':
+                vis.displayData = mainData;
+                break;
             case 'Category':
                 vis.displayData = mainData.filter(d => d['Category'] === selectedCategoryValue)
                 break;
