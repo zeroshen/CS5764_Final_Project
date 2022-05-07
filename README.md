@@ -5,7 +5,7 @@
 **Team Members:** Zhen Shen, Meng Qi, Mayur Dhepe, Ashish Bhat
 
 - URL to the website: https://zeroshen.github.io/CS5764_Final_Project/
-- URL to the video:
+- URL to the video: https://drive.google.com/file/d/16aFV7Akm8dywHWwMb8eyyhuRibnRKNZ3/view?usp=sharing
 
 ## Project Description:
 Provide insights to android application developers about the trends in the android market and help them in creating more influential or successful applications based on various factors like rating, reviews, number of installs, etc. The play store applications data has enormous potential to drive application-making businesses and companies to success. Actionable insights can be drawn for developers to work on and capture the android market!
