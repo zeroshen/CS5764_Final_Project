@@ -15,9 +15,12 @@ Provide insights to android application developers about the trends in the andro
   - ```style.css```: Main CSS file for the project used to format the contents of our web page
 - ```data/```:
   - ```datacleanup.ipynb```: Notebook containing the data cleaning process
-  - ```googleplaystore.csv```: Original dataset
-  - ```googleplaystore_converted.csv```: Cleaned dataset
-  - 
+  - ```googleplaystore.csv```: Original dataset 1
+  - ```googleplaystore_converted.csv```: Cleaned dataset 1
+  - ```googleplaystore_user_reviews.csv```: Original dataset 2
+  - ```googleplaystore_converted_withReviews.csv```: A combined dataset for dataset 1 and dataset 2(With reviews)
+  - ```googleplaystore_user_reviews_cleaned.csv```: Cleaned dataset 2
+  - ```word_counts_converted_v2.csv```: Cleaned dataset for frequent words
 - ```js/```:
   - ```areachart.js```: Code for the area chart visualization **(Interactive)**
   - ```barChart.js```: Code for the bar chart visualization **(Interactive)**
